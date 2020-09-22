@@ -226,7 +226,7 @@ label day1_ng:
             jump day1_gg
 
 label day1_fo:
-    scene
+    scene bg_black
     "I decided I wasn’t going to deal with this when I didn’t have that many days left to live, and decided to go somewhere else. "
 
     menu:
@@ -270,7 +270,7 @@ label day1_lp:
     jump day1_done
 
 label day1_wp:
-
+    scene bg_corner_day1
     pc "Oh! I won!"
     show ch_hb_tears
     hb "No… No way…"
