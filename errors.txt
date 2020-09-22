@@ -2,21 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 43: menu statement expects a non-empty block.
-    menu:
-        ^
-
-File "game/script.rpy", line 44: expected statement.
-    "GG.":
-         ^
-
-File "game/script.rpy", line 47: expected statement.
-    "HB.":
-         ^
-
-File "game/script.rpy", line 49: expected statement.
-    "M.":
-        ^
+File "game/script.rpy", line 135: Line is followed by a block, despite not being a menu choice. Did you forget a colon at the end of the line?
+    "GO TO ARCADEROOM1"
+                       ^
 
 Ren'Py Version: Ren'Py 7.3.5.606
-Sun Sep 20 09:18:11 2020
+Tue Sep 22 13:48:17 2020
