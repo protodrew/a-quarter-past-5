@@ -123,12 +123,12 @@ label day1_gse:
 
 label day1_wsg:
     scene bg_long_day1
-    show ch_gg_impressed
+    show ch_gg_angry
 
     gg "Oh… You actually. Won, huh."
     "With that, the metal clasp that had been holding the platypus down comes unhinged, letting it fall easily into my hands. It feels nice to have won something, but after hugging it tightly for a few seconds, I realize that I don’t actually want to lug this thing home."
     pc "Do you, uh, want this…?"
-    hide ch_gg_impressed
+    hide ch_gg_angry
     show ch_gg_flustered
     "The girl looks so genuinely startled that it makes me wonder if I accidentally said a slur or something, but recollects herself quickly enough."
     gg "You sure about that? You’ve got yourself a real good chunky boy right there. Maybe you shouldn’t be letting go of him that easily."
