@@ -21,15 +21,15 @@ label start:
 
     scene bg_desk_day1
 
-    show ch_milf_tired
+    show ch_owner_tired
 
     mf "I mean, I appreciate the business, hun, but are you sure you want to be spending your time here?"
     pc "{cps=25}Should I… not be?{/cps}"
     pc "{cps=25}You make it sound kind of… sketchy.{/cps}"
 
 
-    hide ch_milf_tired
-    show ch_milf_smug
+    hide ch_owner_tired
+    show ch_owner_smug
 
     mf "Here? The ol’ NAMEOFARCADE? No, this place is as solemnly serious and trustworthy as it was twenty years ago, and I’d appreciate it if you treated it as such."
     pc "{cps=25}...okay, uhm. Mrs…{/cps}"
@@ -37,13 +37,13 @@ label start:
     pc "… namebutslightlywrongspelled?"
     mf "It's name, dearie, and you already paid."
     pc "Then why did you ask if I was sure I should be going here?"
-    hide ch_milf_smug
-    show ch_milf_laugh
+    hide ch_owner_smug
+    show ch_owner_laugh
     "M laughs, my confusion evidently hilarious to her."
     mf "Just have fun, hun. There are a bunch of other kids here who I’m sure you’ll get along with well."
     pc "It’s kind of late to be making friends."
-    hide ch_milf_laugh
-    show ch_milf_neutral
+    hide ch_owner_laugh
+    show ch_owner_neutral
     mf "Oh, it's never too late."
     mf "But if you’re feeling shy, you’re free to hang out with me some more, alright?"
 
@@ -52,7 +52,7 @@ label start:
             jump day1_hb
         "GO TO ARCADE ROOM 2":
             jump day1_gg
-        "STAY at enterance":
+        "STAY at entrance":
             jump day1_m
 
 label day1_hb:
@@ -153,13 +153,13 @@ label day1_lsg:
 
 label day1_m:
     scene bg_desk_day1
-    show ch_milf_guilt
+    show ch_owner_guilt
     mf "Oh? You decided you want to hang out with me some more?"
-    hide ch_milf_guilt
-    show ch_milf_laugh
+    hide ch_owner_guilt
+    show ch_owner_laugh
     mf "Well, that’s just fine, hun. I’m flattered you want to spend some more time with an old coot like me."
-    hide ch_milf_laug
-    show ch_milf_neutral
+    hide ch_owner_laug
+    show ch_owner_neutral
     mf "Unless you’re just being nice and sticking around for a bit? Are you sure that you don’t want to go play some games?"
 
     menu:
@@ -170,43 +170,43 @@ label day1_m:
 
 label day1_sa:
     scene bg_desk_day1
-    show ch_milf_neutral
+    show ch_owner_neutral
     pc "No, I want to hang out and talk with you for a bit, if that’s okay."
     mf "Oh, I’m most certainly okay with it. I’m just not sure if spending your time with a rackety ol’ woman like me is a wise investment on your part."
     pc "I dunno. You seem nice enough."
-    show ch_milf_smug
+    show ch_owner_smug
     mf " I seem it, huh. But am I actually it… who’s to say, ufufu."
-    hide ch_milf_smug
-    show ch_milf_guilt
+    hide ch_owner_smug
+    show ch_owner_guilt
     "We stare at each other for a few awkward, palpable seconds."
     pc "...you sound like some sort of cartoon villain."
-    hide ch_milf_guilt
-    show ch_milf_smug
+    hide ch_owner_guilt
+    show ch_owner_smug
     mf "That’s kind of the point though, right? Isn’t it funny?"
-    hide ch_milf_smug
-    show ch_milf_neutral
+    hide ch_owner_smug
+    show ch_owner_neutral
     pc " Uhm… if that’s what you want to believe."
     pc "All that aside… Do you know why this place is still open during. Well, this whole mess?"
-    hide ch_milf_neutral
-    show ch_milf_laugh
+    hide ch_owner_neutral
+    show ch_owner_laugh
     mf "Well, I’m the owner, so I’d hope I know. And I just decided I wanted to keep this place open, so that’s what I’m managing these last few days. So that’s that."
-    hide ch_milf_laugh
-    show ch_milf_tired
+    hide ch_owner_laugh
+    show ch_owner_tired
     mf "Don’t worry, I’m not making any employees work. S’just me, though that means if there are any D*rito crumbs around, you can’t get mad at me, ‘kay?"
     pc "All… by yourself? That feels like a pretty awful way to live your last few days."
-    hide ch_milf_tired
-    show ch_milf_smug
+    hide ch_owner_tired
+    show ch_owner_smug
     mf "Just ‘cause the meteor’s gonna destroy earth doesn’t mean I’m gonna die with it. Ya never know. Gotta plan for that long term."
     pc "I don't think that's..."
     pc "{cps=10}...{/cps}"
     pc " ...well, I guess I can’t complain."
     mf "Tell ya what. If you keep on coming here consistently, we can hang out more and I can let you in on a few more trade secrets, huh?"
-    hide ch_milf_smug
-    show ch_milf_solemn
+    hide ch_owner_smug
+    show ch_owner_solemn
     mf "It gets pretty lonely when you’re as old as me, anyway. Be nice to your elders and spend some time with ‘em."
     pc "How old are you, anyway?"
-    hide ch_milf_solemn
-    show ch_milf_flirty
+    hide ch_owner_solemn
+    show ch_owner_flirty
     mf "Isn’t it a cardinal sin to ask a woman her age?"
     "Then why do you keep bringing it up so often…"
     "But she’s an entertaining enough person to talk to. It’s not like I have anywhere better to be, so I guess I’ll see her tomorrow."
@@ -215,7 +215,7 @@ label day1_sa:
 
 label day1_ng:
     scene bg_desk_day1
-    show ch_milf_neutral
+    show ch_owner_neutral
     pc "I just, uh… wanted to check in on you. I’ll be playing some more games."
     mf "Oh, that’s quite alright. Hope you have fun!"
 
