@@ -9,7 +9,7 @@ label start:
 
     scene bg_newsroom
     show ch_nm_frown
-
+    play music "audio/newssong.ogg"
     nm "with grim faces that the world’s greatest minds have told us to wrap up any unfinished business that we might be having."
     nm "Hug your loved ones, confess to those that you never had the chance to. Eat the foods you always were curious about, visit that place you’ve been meaning to."
     nm "H***, maybe try and beat that high score you’ve always been meaning to. God knows you won’t have another chance to once Friday arrives."
@@ -20,7 +20,7 @@ label start:
     "I wanted to keep watching, but my thoughts were interrupted as the lady at the counter finished counting up the bills I had given her."
 
     scene bg_desk_day1
-
+    play music "audio/Day1.ogg" fadeout 1
     show ch_owner_tired
 
     mf "I mean, I appreciate the business, hun, but are you sure you want to be spending your time here?"
