@@ -918,7 +918,7 @@ label day3_mf:
         "Call her out on it":
             jump day3_co
         "Let it slide":
-            jump day1_ls
+            jump day3_ls
 
 label day3_co:
     scene bg_desk_day3
