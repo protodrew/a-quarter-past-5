@@ -1,24 +1,22 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 340, in script
-    jump day2_hb
-SyntaxError: invalid syntax (script.rpy, line 340)
+  File "game/script.rpy", line 589, in script
+    jump day3_m
+ScriptError: could not find label 'day3_m'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 340, in script
-    jump day2_hb
-  File "/Applications/renpy-7.3.5-sdk/renpy/ast.py", line 1832, in execute
-    if renpy.python.py_eval(condition):
-  File "/Applications/renpy-7.3.5-sdk/renpy/python.py", line 2057, in py_eval
-    code = py_compile(code, 'eval')
-  File "/Applications/renpy-7.3.5-sdk/renpy/python.py", line 692, in py_compile
-    raise e
-SyntaxError: invalid syntax (script.rpy, line 340)
+  File "game/script.rpy", line 589, in script
+    jump day3_m
+  File "/home/protodrew/Documents/renpy-7.3.5-sdk/renpy/ast.py", line 1697, in execute
+    rv = renpy.game.script.lookup(target)
+  File "/home/protodrew/Documents/renpy-7.3.5-sdk/renpy/script.py", line 898, in lookup
+    raise ScriptError("could not find label '%s'." % str(original))
+ScriptError: could not find label 'day3_m'.
 
-Darwin-18.7.0-x86_64-i386-64bit
+Linux-5.4.0-7642-generic-x86_64-with-debian-bullseye-sid
 Ren'Py 7.3.5.606
 A Quarter Past 5 0.03
-Tue Oct  6 13:26:59 2020
+Tue Oct  6 14:31:59 2020

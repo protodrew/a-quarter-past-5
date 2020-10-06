@@ -32,7 +32,7 @@ label start:
     ow "Here? The ol’ NAMEOFARCADE? No, this place is as solemnly serious and trustworthy as it was twenty years ago, and I’d appreciate it if you treated it as such."
     pc "{cps=25}...okay, uhm. Mrs…{/cps}"
     "My eyes trail down to her nametag, though it was hard to make out the lettering what with the vomit’s worth of Lisa Frank stickers encasing it."
-    pc "… Poca?"
+    pc "… Rosie?"
     ow "It's Rosa, dearie, and you already paid."
     pc "Then why did you ask if I was sure I should be going here?"
     hide ch_owner_smug
@@ -323,13 +323,13 @@ label day1_wp:
 
 label day1_done:
     scene bg_black
-    "{cps=25}Transition to day 2{/cps}"
+    "{cps=25}4 Days Remain{/cps}"
     jump day2_start
 
 label day2_start:
     scene bg_newsroom
     show ch_nm_frown
-    play music "audio/newssong.ogg"
+    play music "audio/newssong.ogg" fadeout 1
     nm "While the phrase ‘new beginnings’ might make one feel a little nihilistic at a time like this, that doesn’t necessarily mean that it’s unable to be applied to current circumstances."
     nm "We have a unique situation, now, where we’re able to take the initiative and not worry about repercussions if only because there isn’t ample time to receive them."
     nm "I’d say something like “take a chance to talk to that one guy in your office you’ve never been brave enough to talk to before”, but hopefully your boss isn’t keeping you there during the end of the world."
@@ -344,6 +344,7 @@ label day2_start:
         jump day2_m
 
 label day2_m:
+    play music "audio/Day2.ogg" fadeout 1
     scene bg_desk_day2
     show ch_owner_neutral
     pc "So... Do I still need to pay if I just want to hang out with you the entire day?"
@@ -384,9 +385,10 @@ label day2_m:
     "I spend the rest of the day hanging out with Rosa, counting out tickets and money as people come to visit the arcade."
     "When it starts getting dark, I wave her goodbye and start making my way home."
     "I wonder if I’ll see her tomorrow..."
-    jump day3_start
+    jump day2_done
 
 label day2_gg:
+    play music "audio/Day2.ogg" fadeout 1
     scene bg_long_day1
     show ch_gg_neutral at right
     "Jade’s in the same place where I saw her last, albeit minus the platypus plushie in her arms."
@@ -474,11 +476,12 @@ label day2_gg:
     pc "See you tomorrow, pal! Let’s hope the meteor doesn’t try to push up its schedule, right?"
     "With that, I wave her off. Despite everything, I really do hope I’ll see her again tomorrow."
 
-    jump day3_start
+    jump day2_done
 
 
 label day2_hb:
-    scene bg_corner_day1
+    play music "audio/Day2.ogg" fadeout 1
+    scene bg_corner_day2
     "I haven’t even finished buying a ticket for the day from Rosa when Herbert comes dashing around the corner, smoke smothered by the way his sneakers skid across the floor as he throws an accusatory finger in my direction."
     show ch_hb_angry at right
     hb "Y-you!!"
@@ -556,8 +559,472 @@ label day2_hb:
     pc "Of course! If you’re not there, I’d be disappointed."
     "He smiles cheekily at me, relieved."
     "Guess I’ll see him tomorrow."
-    jump day3_start
+    jump day2_done
+
+    label day2_done:
+        scene bg_black
+        "{cps=25}3 Days Remain{/cps}"
+        jump day3_start
 
 label day3_start:
+    scene bg_newsroom
+    show ch_nm_frown
+    play music "audio/newssong.ogg" fadeout 1
 
+    nm "I wanted to dedicate today’s morning segment to a few words on what it means to regret."
+
+    nm "I’m sure we all find ourselves mired in thoughts about regret right now, whether they’re small dredges on fights that left a bad taste in our mouth or a general tiredness at what was accomplished in our life."
+
+    nm "It goes without saying, but we can’t change life. We can’t go back in time, and choices made in imaginary arguments certainly don’t hold any weight."
+
+    nm "In the past, we could say things like ‘keep moving forward’ and ‘make the most of what’s left in your life’, but…"
+
+    nm "What do you say when there’s only two days left? Can you say anything at all?"
+
+if route == "hb":
+    jump day3_hb
+elif route == "gg":
+    jump day3_gg
+elif route == "mf":
+    jump day3_mf
     return
+
+
+
+label day3_hb:
+    play music "audio/Day3.ogg" fadeout 1
+    scene bg_corner_day3
+    show ch_hb_angry
+    "Rosa greets me as usual when I enter the arcade, stifling a yawn despite the fact that it’s half past noon. I suppose I shouldn’t be nitpicking her when I only woke up an hour ago myself."
+    "I find Herbert fairly quickly, which is expected; we did agree to do so yesterday, after all."
+    "But what I don’t expect is the handful of boys that surrounds him, towering over him like playground bullies."
+    "To his credit, he tries to pull himself together when he sees me."
+    hb "Uh, heyyyyyy. PRO."
+    hb "What. Is up."
+    pc "Who’re these people?"
+    "Even though my acknowledgement shouldn’t be anything unexpected, he still flinches as if I’ve ripped a bandaid off of him. He glances at the other people as if to speak, but they don’t say anything. He swallows thickly."
+    hb "I guess, uh… they wanted to have a chance at beating me."
+    hb "So, I guess we can’t have our duel today, right? Sorry, kid, you’re not going to be able to play with me today. Better luck next time!"
+    hb "If there even is a next time, heh. I-I’m sure you’ll be dead before then, though."
+    "Kid…?! I’m not a--"
+    "...he glares at me anyway, brows knit together with all the pathetic force of someone trying to recall what it means to look threatening. If I didn’t have a pit growing in my stomach, I’d find the strength to comment on it."
+
+    menu:
+        "STAY":
+            jump day3_stay
+        "DON'T STAY":
+            jump day3_ds
+
+
+label day3_stay:
+    scene bg_corner_day3
+    show ch_hb_angry
+    pc "No, I don’t think I will."
+    hide ch_hb_angry
+    show ch_hb_shocked
+    hb "...what?"
+    "Determinedly, I grip at his arm, pulling him closer to me as I blink as sweetly as I can at the other boys."
+    pc "Sorry, can you guys all leave? Herbert and I have business to attend to."
+    "He struggles for just a moment before something clicks in that dumb skull of his, growing limp as I negotiate with the other boys. Soon enough, they walk off in grumbled protest, leaving me and Herbert alone together."
+    hb "...you can let go, now."
+    pc "Why? Are you afraid you’ll get cooties?"
+    hide ch_hb_shocked
+    show ch_hb_embarrassed
+    hb "N-no…"
+    "I let go obediently nonetheless, laughing to myself with how flustered he looks."
+    hb "You gotta learn to respect personal space, alright?"
+    pc "Sorry, sorry. Didn’t think it would bother you so much."
+    hb "Jeez… I don’t know why I hang out with you."
+    pc "Because the alternative is hanging out with those guys. Or being alone, I guess, which also sucks, especially when the world is ending."
+    pc "What was their deal, anyway?"
+    hide ch_hb_embarrassed
+    show ch_hb_guilty
+    hb "Oh. Uh."
+    "Herbert scuffs his foot on the ground."
+    hb "They heard that… you beat me."
+    pc "Huh?"
+    hb "In Pong, y’know. I always bragged to them about how good I am-- How. How good I was at video games. And now they wanted to harass me over the fact that I couldn’t beat you."
+    hb "I guess… I had it coming, y’know? Haha."
+    hb "It was almost cathartic, before you came. Relieving, really. Needed someone to frickin’, yell at me for a bit. Remind me of the sort of person I am. Keeping me humble."
+    pc "...Herbert, that’s really not--"
+    hb "…"
+    hb "...did you really fall for that? Me sayin’ sappy shit like that?"
+    hide ch_hb_guilty
+    show ch_hb_angry
+    "Trying to save face, Herbert pulls himself back up to his full height, chest puffed out."
+    hb "Man, I bet you’d believe it if I told you ‘gullible’ was written on the ceiling."
+    pc "I don’t think it’s a secret at this point that you hinge your entire identity on being good at video games."
+    "Herbert blinks at me incredulously before scowling."
+    hb "Man, buzz off. I’m gonna be dead too soon to waste my time on this."
+    hide ch_hb_angry
+    "He shoulders past me, causing me to stumble for a moment before he storms out of the arcade."
+    "I… wonder if I’ll see him tomorrow."
+
+    jump day3_end
+
+label day3_ds:
+    scene bg_corner_day3
+    show ch_hb_angry
+    "His glare is enough to chase me off, and so I do it, ducking my head as I turn away from the group."
+    hide ch_hb_angry
+    "I justify it to myself as the fact that it’s what we both wanted: to stay uninvolved, to keep anyone from getting involved. I can understand that sort of a shame; respect it, even."
+    "But it doesn’t leave any less of a bad taste in my mouth as I leave the arcade, head too busy to acknowledge Rosa’s calls after me as I make my way back home."
+    "The phantom feeling of Herbert’s gaze boring into my back doesn’t leave, though, not when I make it home, not when I lay in bed and toss and turn for hours, listening to the radio discuss the end of all time"
+    "I resolve, then, not to go to the arcade again; or at least, not tomorrow."
+
+    jump day3_end2
+
+label day3_gg:
+    play music "audio/Day3.ogg" fadeout 1
+    scene bg_long_day3
+    show ch_gg_neutral
+    pc "Heyyyyy, Jade!"
+
+    "I wave wildly at her before I’ve even made it to the entrance, tackling her with a hug before she can make a move to escape."
+
+    hide ch_gg_neutral
+    show ch_gg_surprised
+    gg "H-hey, watch it! There are other people in line, here--!"
+
+    "She flounders underneath my grip as she struggles to get her bearing again. Despite how flustered she looks, though, she doesn’t look angry, so I chalk it up to a win."
+
+    pc "I was so excited to hang out with you again today! "
+
+    gg " R… really?"
+
+    pc "Why do you sound so surprised? You’re a fun person to be around, you know!"
+
+    gg " I don’t think that’s necessarily…"
+
+    pc "Uh uh uh! Is that a lack of confidence in your voice that I’m detecting? Not allowed!"
+    hide ch_gg_surprised
+    show ch_gg_flustered
+    "Jade laughs nervously, but her eyes dart from side to side. She looks nervous; about what, I can’t tell--"
+
+    "...or maybe it’s something to do with the fact that the world is ending soon. I guess I’m the abnormal one for being so okay with my inevitable death in that regard."
+
+    "I resolve to grab her hand instead, eliciting a different sort of nervousness from her."
+
+    pc "C’mon! Let’s spend some time together in the arcade, alright? Maybe we can play that game again."
+
+    gg " ...are you sure that’s a good idea?"
+
+    pc "Oh, if you don’t want to play a game, then we can just, like, chill, or otherwise eat some really greasy and probably way past it’s expiration date pizza--"
+
+    gg "No, I mean… hanging out with me."
+
+    "She pulls her hand away from mine, and I let it go."
+
+    pc "Why wouldn’t it be? Is something wrong?"
+
+    pc "Even if you’ve actually got some deadly disease or something, the world ends too soon for me to care about that."
+
+    gg "No, that’s not…"
+
+    gg "...okay, yeah, whatever. You talk way too casually about stuff like that for it to be something that most people could brush off, I hope you realize."
+
+    pc "Well, I guess you’re just not like other girls, huh?"
+    hide ch_gg_flustered
+    show ch_gg_neutral
+    gg "Ghrk."
+
+    "Jade stifles something that’s either a cough or a laugh or both. I smile cheekily and move to the game that I had played with her beforehand."
+
+    "INSERT ANOTHER ROUND OF MINIGAME HERE; DOESNT MATTER OUTCOME"
+
+    "It’s as I’m finishing up the game that I feel a tug on my jacket."
+
+    "Initially, I think it’s just that it’s been caught on something; it’s an old jacket with tons of loose threads, after all. I guess I just got way more into the game than I had initially realized."
+
+    "Without looking, I pull on it to try and get it unstuck. The tugging stops, just for a moment, before returning to a staticked pulling pattern at my side."
+
+"I frown, turning to properly unstick the jacket from whatever it’s stuck to when I pause and realize the real problem."
+
+"It isn’t stuck; Jade is trying to steal it."
+
+menu:
+    "Call her out on it":
+        jump day3_co
+    "let her have it":
+        jump day1_lh
+
+
+label day3_ns:
+scene bg_long_day3
+show ch_gg_neutral
+
+pc "Hey, what the hell?"
+
+"I jerk back from Jade, gripping onto the charm as I frown at her. Her fingers grasp the space in the air where the charm had been."
+
+pc "Were you… stealing from me?"
+hide ch_gg_neutral
+show ch_gg_flustered
+
+"Jade’s face distorts for a second before settling on a smug, vaguely nervous expression."
+
+gg "Jeez, I got cocky, huh? Should’ve waited for a better time to do that."
+
+gg "Yeah, I sure was. And what’re you gonna do about it?"
+
+gg "Cry? Pee your pants, maybe? Throw a fit?"
+
+pc "Well, I’m certainly not going to hang out with you anymore, that’s for sure."
+
+"I tug my jacket closer around my shoulders as I take a few nervous steps away from her, brow furrowed as I make sure that the path between me and the exit is clear."
+
+"It… it really does hurt. I’m not sure what Jade was planning to do all this time, but I find myself wondering… was this the real her, all along?"
+
+"For a moment, she looks… hurt."
+
+"But what was she expecting to happen? Surely, nothing other than this?"
+
+gg "Fine, then. Didn’t want to hang out with a loser like you, anyway."
+
+gg "See ya."
+
+"With that, she flips her hair almost defiantly at me before making her way off."
+
+"Nervous, I decide not to go to the arcade tomorrow."
+jump day3_end2
+
+label day3_lh:
+    scene bg_long_day3
+    show ch_gg_neutral
+    pc "Oh, did you want this? Lemme help you with that."
+
+    "I reach down to unfasten the honeybee charm from my jacket before handing it over to her."
+
+    pc "Here you go! Take good care of it, alright?"
+    hide ch_gg_neutral
+    show ch_gg_surprised
+    "Jade’s hands hang limp at her side as she stares at me, expression impossible to read."
+
+    gg "I was… stealing that from you, dumbass."
+
+    pc "Oh, I realized. Did you just want to steal it? Do you not actually want it?"
+
+    gg "That shouldn’t be what you’re concerned about, here!"
+
+    gg "Shouldn’t you be mad at me? Angry? Upset? At the very least, betrayed by me?"
+
+    gg "Why are you still talking to me so casually?! Is this a joke?"
+
+    pc  "No, I just don’t really care."
+
+    pc "And I think it’s pretty obvious now that you were doing that just to get a reaction out of me."
+
+    "Jade’s eyes widen for a moment before turning back into an angry, almost begging expression."
+
+    gg "Right? So aren’t you mad at me for manipulating you?!"
+
+    pc "Again, I don’t really care."
+
+    pc "You wanna go get some ice cream?"
+    hide ch_gg_surprised
+    show ch_gg_eyeroll
+    gg "...you can’t be serious."
+
+    pc "If you really want me to be mad, then, uh, grr. I’m angry so you need to be the one that pays."
+
+    "Jade stares at me incredulously before shaking her head."
+
+    gg "I don’t… I don’t get you. What the hell is your problem?"
+
+    "With that, Jade shoulders past me, causing me to drop the charm."
+
+    pc "Ah--"
+
+    "I bend over to pick it up, rubbing it to clean it of dust. By the time I look up again, she’s gone."
+
+    "I hope I’ll see her again tomorrow..."
+
+jump day3_end
+
+label day3_mf:
+    scene bg_desk_day3
+    play music "audio/Day3.ogg" fadeout 1
+
+    "I find myself in the same space I was yesterday, sitting prettily on the stool and pressing two-sided tape onto the back of ‘END OF THE WORLD SALE’ posters."
+
+    "It feels like a bit overkill, especially when the business model for the end of the world doesn’t really seem sustainable, but I think I get the sentiment."
+
+    "I flip the poster over. The smiling red meteor on the front feels like a mockery of the one that hangs heavy in the sky above."
+
+    "Yeah, it’s kinda dumb to be encouraging more stress on myself, I know."
+
+    "As if she had read my mind, Rosa sighs from besides me, rubbing the back of her neck. I blink in surprise."
+
+    show  ch_owner_tired
+
+    pc "I-I mean… I wasn’t going to say it, but… yeah."
+
+    mf "Well, not just anyone could do this."
+
+    "I can’t really tell whether she’s talking more to me or herself, but I let her run her mouth anyway."
+
+    mf "After all, when you’ve got young kids, running these things at the same time tends to be a hard thing to do."
+
+    mf "So it’s a good thing that I can do this now."
+
+    "So she’s… got a kid?"
+
+    "I’m about to ask her more on the subject when she swears profusely, waving her hand in the air."
+    hide  ch_owner_tired
+    show  ch_owner_mean
+    pc "W-what is it?"
+
+    mf "Agh, dammit— "
+
+    mf"I just-- It’s nothing, I just think one of those kids pulled one over on me."
+
+    "She gestures at a coin in her hand. Sure enough, it’s oozing something brown and sticky; likely some chocolate candy."
+
+    mf "Cheeky lil’ bastards…"
+
+    "Huh."
+
+    mf "Yeah? What is it?"
+
+    pc "Nothing, I’m just… I’m surprised how foul your mouth tends to be."
+    hide  ch_owner_mean
+    show  ch_owner_smug
+    mf "Why? Are you one of those kids who thinks anyone over the age of fifty isn’t allowed to swear unless they’re some grizzled ol’ mafia boss?"
+
+    pc "Well, no, but..."
+
+    pc "Not to fall in cliches, but I think it’s kind of… motherly, how you look after the arcade like this. Touching, even."
+
+    pc "A-and my mom isn’t really… one that swears, so I guess it’s a little jarring."
+
+    pc "But not a bad thing, or anything!"
+
+    "Rosa laughs a little at that."
+    hide  ch_owner_smug
+    show  ch_owner_laugh
+    mf "Motherly, huh..."
+
+    mf "I mean, it’s not like someone like me would ever want to be a mother anyways. So I guess that this arcade is the replacement I’ve got to deal with."
+
+    "...that’s not right, is it?"
+
+    "Maybe I was recounting the conversation wrong in my head, but didn’t she say she had a kid a little bit ago?"
+
+    "But… it feels like such a rude thing to bring up, so maybe I shouldn’t. I’m probably just overthinking this anyway, right?"
+
+    "People don’t like to be called out when they contradict themself, after all..."
+
+    menu:
+        "Call her out on it":
+            jump day3_co
+        "Let it slide":
+            jump day1_ls
+
+label day3_co:
+    scene bg_desk_day3
+    show ch_owner_laugh
+    "I stutter a glance over in her direction, but she doesn’t seem to be particularly bothered by the direction she’s taken the conversation."
+
+    "I turn the words over in my mind a few times before daring to call out:"
+
+    "So I can’t tell… do you have a kid or not?"
+    hide ch_owner_laugh
+    show ch_owner_mean
+    "She doesn’t… freeze, per se, but her fingers fumble with the bills she’s counting. It’s a small enough hiccup that if I hadn’t been paying close attention, I don’t think I would’ve caught sight of it."
+
+    mf "Isn’t that a little rude to ask, kid?"
+
+    pc "If you don’t want to talk about it, that’s fine. You just contradicted yourself, so… I was a little confused."
+
+    mf "…"
+
+    mf "Well, good on you for calling me out on it, huh!"
+
+    mf "In that case, lemme ask you another thing:"
+
+    mf "What do you think it would make more sense for me to hide? The fact that I’ve had a kid, or the fact that I never had one?"
+
+    mf "Either could be an ample source of shame. Either could be proof that I’m incompetant as a person, if you look too hard."
+
+    mf "Or maybe I’m just giving you a tough time. That’s totally the sort of person I am, right?"
+
+    mf "Must grind your gears, having to call me out. Piss you off a little bit, maybe."
+
+    pc "I don’t think it matters, actually."
+    hide ch_owner_mean
+    show ch_owner_neutral
+    "To her credit, Rosa at least looks surprised."
+
+    pc "Whatever your ‘truth’ is… you’re not interested in what you actually say, right? It’s a little more messed up than that."
+
+    mf "…"
+    hide ch_owner_neutral
+    show ch_owner_mean
+    mf "You really like to just say shit, huh."
+
+    pc "I’m sorry, w-was that a little too--"
+    hide ch_owner_mean
+    show ch_owner_laugh
+    "Rosa cuts me off with a wave of her hand, laughing lightly."
+
+    mf "No need to apologize. I’ll give you the same shtick that I did yesterday."
+
+    mf "Make sure you show up tomorrow, right? Or else I’ll think you’re a ‘loser’ or whatever."
+
+    mf "I need to chew on some stuff, now that I realize that you have some balls, and I think you do, too."
+
+    "Thus saying so, Rosa makes a shooing motion with her hands. Obediently, I leave the arcade."
+
+    "I hope she’ll actually be here tomorrow..."
+
+    jump day3_end
+
+label day3_ls:
+    scene bg_desk_day3
+    show ch_owner_laugh
+    "I opt not to press any further. It’s not my business, nor should it be; this woman has offered me nothing but kindness. Isn’t privacy the smallest kindness that I could grant her?"
+
+    "There are a few awkward moments of silence as I flounder with what to say before Rosa mutters something under her breath."
+    hide ch_owner_laugh
+    show ch_owner_mean
+    mf "So you’re that sort of a coward too, huh…"
+
+    pc "I’m… sorry?"
+
+    mf "Oh, nothing, nothing. Listen, kiddo."
+
+    mf "You’ve offered me a great deal of entertainment, but I think it’d be in your best interests to hang out with more interesting people from now on, alright? And not in the arcade. You really should be expanding your range of entertainment; experience things that you hadn’t really had a chance to beforehand."
+
+    pc "It’s fine! I really enjoy talking with y--"
+
+    mf "That wasn’t a suggestion."
+
+    "I swallow thickly under her gaze, feeling somehow as if I’ve messed up very, very seriously."
+
+    "Nodding politely, I duck my head and head out of the arcade."
+
+    "I don’t think I’ll come here again; at least, not tomorrow."
+
+    jump day3_end2
+
+label day3_end:
+    scene bg_black
+    "{cps=25}2 days remain{/cps}"
+    jump day4_start
+
+label day3_end2:
+    scene bg_black
+    "{cps=25}2 days remain{/cps}"
+    jump day4_end
+
+label day4_start:
+
+
+
+
+label day4_end:
+    scene bg_black
+    "{cps=25}1 day remains{/cps}"
+    jump day5_start
+
+label day5_start:
