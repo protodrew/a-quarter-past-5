@@ -746,7 +746,7 @@ menu:
     "Call her out on it":
         jump day3_co
     "let her have it":
-        jump day1_lh
+        jump day3_lh
 
 
 label day3_ns:
@@ -1018,6 +1018,400 @@ label day3_end2:
     jump day4_end
 
 label day4_start:
+        scene bg_newsroom
+        show ch_nm_frown
+        play music "audio/newssong.ogg" fadeout 1
+
+nm " It’s less than 48 hours till it’s over, right? I don’t know about you all, but…"
+
+nm " I’m surprisingly… calm about this whole matter. For a while, I was incredibly stressed over the things I’d done."
+
+nm " Or what I didn’t do, or if I made the right choice… which makes what I said yesterday pretty hypocritical, right?"
+
+nm " But I think what I was so concerned about was what those things said about me, as a person. About what sort of ‘truth’ they were revealing about me, as if I was so concerned about whether or not people knew what the ‘real’ me really was."
+
+nm " What I’ve realized is that the only person who has to be content with my actions is me, because I’m the only one who has to spend the rest of my life with me."
+
+nm " So that begs the question; what does it mean for you to be alright with yourself? Have you been someone you - and I do mean you, not someone else - is proud of?"
+
+
+if route == "hb":
+    jump day4_hb
+elif route == "gg":
+    jump day4_gg
+elif route == "mf":
+    jump day4_mf
+    return
+
+label day4_mf
+
+    scene bg_desk_day1
+
+" Rosa isn’t at the counter when I first walk in today. In her place is a handmade sign with an amount of glitter that’s comparable to the avalanche that was on her nametag. There’s the words “FREE 4 ALL, JUST DONT BREAK ANYTHING >>>:((” scrawled across it in sharpie."
+
+ " I’m tempted to leave right then and there, maybe cut my losses and cash in on some tooth rotting smoothies since I don’t need to worry about my health anymore, when I hear a firm “a-hem” from behind me."
+    show ch_owner_neutral
+mf " Don’t think you could get rid of me that easily, champ. "
+
+ " I come closer and notice that she’s holding a lit cigarette in her hand. The smell makes my nose wrinkle instinctively, and she laughs."
+
+mf " C’mon, let’s go inside. That’ll air out the smell."
+
+pc " No… no I don’t think it will, actually."
+
+mf " Haha oh noooo you got me. Here I was so confident my dastardly plan was foolproof."
+
+ " She delivers the line in complete monotone, but there’s still a smirk planted firmly on her face."
+
+ " Nonetheless, she walks into the arcade without looking to see if I follow or not; so of course, I do, casting a wary glance at the ‘no smoking’ sign that’s tacked up over the entrance."
+
+ " She doesn’t go very far in, and we sit at the cleanest table available under the fluorescent lights."
+
+ " Even then, I find myself brushing off crumbs as I make my way into the seat. We sit at opposite ends of the table, like a criminal and their interrogator, though as for who fills what role, I really wouldn’t be able to say."
+
+mf " So."
+
+pc " S-so."
+
+mf " You had time to chew on stuff last night, so now’s your chance to ask whatever question you’d like."
+
+mf " I’ve mentally prepared myself, so go ahead!"
+
+pc " D… do you want me to just. Psychoanalyze you?"
+
+mf " Why not? It’ll be fun."
+gg
+mf " We can make it an, uh."
+
+ " She pauses, and I wonder if she’s trying to figure out my gender."
+
+mf " ...friends’ night!"
+
+pc " Yeah, haha…"
+
+ " We lapse into awkward silence, and I tease the charm I have attached to my jacket as I try to fight down the growing anxiety within me."
+
+ " I guess… if this is what she wants, then who am I to refuse, right?"
+
+pc " I’m going to ask you this, because I don’t… I think you’d take it more personally if I didn’t ask this than if I did."
+
+mf " Shoot, kid."
+gg
+pc " Why do you seem to enjoy lying so much?"
+
+pc " Maybe I’m reading this wrong, but…"
+
+pc " You lie, and I notice, and I call you out on it. And you seem like you’d get upset if I didn’t, but I don’t even… really get why you lie in the first place."
+
+ " Rosa takes a moment of pause at that, pulling at her lip with yellowed teeth as she contemplates me for a second. I resist the urge to shudder underneath her gaze."
+
+mf " Lemme tell you a lil’ tip I’ve learned over the years, kid."
+
+ " Rosa puts her hands out to the side as if she’s measuring a fish at the market, her cigarette ggburning out between her fingers."
+
+mf " Lying is a two-way street. You need someone to tell the lie, and someone to accept the lie."
+
+mf " Sure, there’s all that BS involved with lying to oneself, but that’s not what I’m talking about, ‘lright? I’m talking about an exchange of ideals, real or fake."
+
+mf " Everyone wants to accept lies, if they think it’ll benefit them and won’t hurt anyone else in the long run. Doesn’t mean it smarts any less when you know something was a lie."
+
+mf " So every lie has a payment: the truth of the matter. So here’s your due."
+
+ " She inhales deeply, crossing her arms."
+
+mf " I’m a normal worker. I hate my job and when I go home, my feet hurt."
+
+mf " I come back to a fridge full of beer and I’ve been tired for a really long time."
+
+mf " “Before the world was announced to end?” Oh, long before that. But that’s fine, I think."
+
+mf " My own personal happiness doesn’t really matter. Why do you think I’m runngging an arcade when I should be enjoying these last few days of my life? Seems kind of stupid, don’t you think?"
+
+mf " But I don't care, not exactly. I can’t even really say that I enjoy seeing people being happy here. I told myself for a while that I do, but it’s probably not true anymore. The only thing keeping me here is the fact that the longer I work here, the longer I can stave off any guilt I feel."
+
+mf " So in the end, it’s my son’s fault. Because he died, and I’m still here."
+
+mf " ...so no matter what, I was telling the truth yesterday, right? If you really think about it. ‘Had’ a kid, ‘have’ a kid, it’s all semantics."
+
+ " With that, she leans back and throws her hands into her pockets."
+
+mf " So how’s that. Are you alright with that sort of ‘payment’?"
+
+pc " No, I think that’s all kind of… BS, honestly."
+
+ " Rosa startles, gaze stuttering over my face before she glances behind her as if she’s making sure it wasn’t someone else she was hearing."
+
+ " There's something oddly satisfying in seeing her taken genuinely off guard, in a way that’s different than when I merely startled her with cheap potshot comments."
+
+pc " I don’t… I don’t know what happened with you and your son. I don’t think it’s my business to know, really."
+
+pc " But using that as an excuse for what you’re doing now, how you’re feeling now… do you not see the flaws in that yourself?"
+
+mf " …"
+
+mf " ...that’s kinda cheeky of you to say that, kid. And I’m not sure I mean that as a compliment."
+
+pc " ...I’m sorry, it was a bit out of line for me to--"
+
+mf " No, I’m not pissed at you or anything. Just thinking, now."
+
+mf " I’m sure other people would be, though."
+
+ " She just… sits there, for a bit, while I find my cheeks growing ever flushed as my anxiety coils up within me, ringing over and over like the muffled tongue of a bell."
+
+ " It’s only as she sighs and rubs her hands through her hair that I have the courage to blink and pull myself up properly, trying to find the same rush of courage that I had felt when throwing my words haphazardly in front of her."
+
+mf " We’ll talk again tomorrow, alright?"
+
+mf " The deal is, if you don’t die, and I don’t die, then we can speak again."
+
+mf " That’s fair, right?"
+
+ " R… right."
+ hide ch_owner_neutral
+ " With that, she nods firmly, and I watch her head further into the arcade, likely to usher everyone out as she closes for the day."
+
+ " I don’t wait to see it happen, and leave as well."
+scene bg_black
+ " I… have no choice but to see her tomorrow, right?"
+
+    jump day4_end
+
+label day4_gg
+    scene bg_long_day4
+    show ch_gg_neutral
+ " When I walk into the arcade and see Jade leaning against the wall, I begin waving excitedly at her almost immediately, grin wide and welcoming."
+
+ " In a worst case scenario, I expected her to scowl and run away. In a best case one, I expected her to run over and hug me. What I don’t expect is her marching over to me angrily, frown growing as she crosses her arms in front of me."
+
+gg " We need to talk."
+
+pc " O… kay?"
+
+gg " P-privately."
+
+pc " Yeah, sure where do you want to-- Oh, okay."
+
+ " Jade turns on her heel and begins making her way over to a darker corner of the arcade before I’ve even finished speaking, and I dog behind her obediently. "
+
+ " When she spins around to face me again, there’s something in her expression that’s seething."
+
+gg " You need to leave me alone."
+
+pc " Huh?"
+
+pc " That’s not what I was expecting-- I mean, uh."
+
+pc " Did I… do something to hurt you?"
+
+gg " No, no, you’re-- You didn’t do anything."
+
+gg " Or rather, you’re doing too much. It’s just--"
+
+gg " Ugh."
+
+ " Jade pinches the bridge of her nose, and I try prodding further."
+
+pc " Hey, if you need anything, I’m here, alright?"
+
+pc " I get… uh, the end of the world is. Kinda stressful for everyone involved."
+
+pc " And I don’t say this to sound obnoxious or conceited, but I’m really uh. Not that afraid about dying, haha. So if you need somewhere to explode, I can be a shoulder to lean on or whatever."
+
+gg " No, that’s not it."
+
+gg " That’s kinda creepy, but it’s not it."
+
+pc " Then what’s it?"
+
+gg " You can’t just--"
+
+pc " You need to tell me what’s wrong for me to help."
+
+gg " You’re so persistent, it makes me sick."
+
+pc " I-- I-I can’t tell if that’s a bad thing or not, but I really just want to help--"
+
+gg " Ugh! Why won’t you just abandon me--"
+
+ " Jade cuts herself off as her voice begins to rise in both intensity and volume, teeth worrying her bottom lip. She glances around nervously, as if to make sure that no one else had heard, before staring back at me as if I were some sort of grand decider of her fate."
+
+ " Maybe, in her mind, I am. The thought that someone would try and place that sort of responsibility on anyone, let alone me, makes my stomach turn."
+
+pc " Why would I?"
+
+pc " That seems like an excessively cruel and dramatic, especially at the end of the world. "
+
+ " Somehow, my statements only seem to provoke her more, her frustration quickly mounting."
+
+gg " Because that’s what everyone else does, isn’t it?"
+
+gg " If you’re just stringing me along because you think it’s fun to screw with someone’s feelings, then I’m sick of it! I’m tired of it and I’d rather you be honest with me now so I can rebound by tomorrow then have the last thought on my mind be how angry I am at myself for falling for this shit!"
+
+gg " The first day, I could believe. Alright. Whatever. Maybe you’re one of those people who gets off doing random acts of kindness."
+
+gg " Second day, okay. Pushing it, but that’s fine, too. You just didn’t know me super well yet, needed to realize how much I sucked before leaving."
+
+gg " Third day was ridiculous. I couldn’t understand why you hadn’t-- why you didn’t leave. You should have left, after getting to know me, and after that, I was like “what the hell is wrong with you?” and decided to take matters into my own hands because at least then, I could believe that I had cut the connection off myself instead of you just tossing me to the side eventually."
+
+gg " But you didn’t even leave then. Which means that you’re just lying to me through your teeth and this entire time you’ve been pretending, stringing me along because you wouldn’t be here otherwise."
+
+gg " It’s not funny anymore."
+
+ " Exhausted, she exhales and leans back onto one of the arcade machines, the sweat on her skin apparent in the fluorescent light. "
+
+pc " Jade…"
+
+gg " Stop. I don’t-- If you’re gonna waste more time on me because you think I’m pathetic then you need to leave. "
+
+pc " Well, uh…"
+
+pc " I don’t mean this in a mean way, but you’re completely wrong, you know."
+
+pc " I’m… I’m kind of ashamed to say it, but I really had no way you felt this way. I’m sorry about that. "
+
+pc " I really enjoy hanging out with you. I don’t think I’d be doing anything else at the end of the world, given the choice."
+
+pc " I mean, it’s not like I have the time to make any other friends--"
+
+gg " Oh."
+
+ " There’s something in her mind that just… clicks, there. Something that elicits such a sigh of understanding from her that there’s something big I’m afraid I’ve missed."
+
+gg " So you’re just hanging out with me because you’re as pathetic as me."
+
+gg " You’re just hanging out with me because you don’t have any other friends, and I’m a good bottom o’ the barrel pick."
+
+gg " Ha."
+
+ " There’s no humor in her voice, but she smiles anyway, gaze tracing circles in the ground as  she comes to some grand conclusion before looking back up at me with a look that I think is supposed to be cruel."
+
+gg " Whatever. It’s not like I really wanted to be around you, anyway."
+
+ " She scoffs and flips her hair with such a violent pointedness that I’m taken aback a bit as she turns away, heels snapping against the carpeted floor."
+hide ch_gg_neutral
+ " Despite her words, I feel more sorry for her than I feel hurt."
+
+ " I… really hope I’ll get to see her tomorrow, one last time."
+
+    jump day4_end
+
+label day4_hb
+    scene bg_black
+    "I’m afraid that I won’t see Herbert when I walk in the next day, but I find him scuffing his feet by the entrance, trying his damnedest to look disinterested with everything around him even as M talks his ear off."
+    show ch_hb_neutral at left
+    show ch_owner_neutral at right
+    mf "Look, you can stay if you wanna stay or you can go if you wanna go but you need to make up your mind, champ. I can’t just have you loitering around here and pissin’ off custo--"
+    hb "PRO!"
+    "He perks up as he sees me approach before coughing in his hand like he’s embarrassed, rolling his shoulders back and glancing off to the side."
+    hb "I-I mean, PRO. Hey. ‘bout time your sorry ass showed up."
+    mf "If they’re the reason that you were being such a brat, then yes, I agree; it is about time they showed up."
+    mf "Now come along you two. Go in and do some ‘gaming’ or whatever it is you kids like to waste your time doing during the end of the world."
+    hb "You say this like you’re not running an arcade."
+    mf "What’d I say? Scram!"
+    "With that, M ushers us inside, making shooing noises with one hand and reaching for the pack of M*rlboro’s in her breast pocket with her other."
+    "If nothing else, Herbert seems… out of it. For a second the flustered expression on his face makes me concerned, but he just spins around once he’s dragged me to a quiet enough corner of the arcade, plopping himself down on one of the seats. I sit next to him."
+    hb "We need to. Uh. Talk."
+    pc "Convenient that we’re already doing that, right now."
+    hb "No, I-I mean-- About yesterday. Why…"
+    hb "Why didn’t you leave me there? You probably should’ve done that."
+    pc "I mean, I left to go home afterwards, so--"
+    hide ch_hb_neutral
+    show ch_hb_guilty at left
+    hb "That’s not what I mean, and you know it! Ugh, I frickin’--"
+    "Herbert groans and bites his thumbnail, eyes darting from side to side like he’s afraid of… something."
+    hb "I’m gonna say two things, alright?"
+    hb "One: I’m. I’m, uh."
+    hb "…"
+    hide ch_hb_guilty
+    show ch_hb_embarrassed at left
+    hb "I’msorryforblowingyouoffokthing number TWO."
+    hb "What you did yesterday was dumb. And cringey."
+    pc "I know, I’m disappointed in the lack of creativity in my insults as well."
+    hb "What? No, that’s not--"
+    "Herbert shakes his head."
+    hide ch_hb_embarrassed
+    show ch_hb_guilty at left
+    hb "I just don’t think… I think what you did was a waste of time."
+    hb "Especially since you beat me. They were all so happy about it."
+    pc "Really? Why do they hate you so much?"gg
+    hb "W-well, hate is a strong word--"
+    pc "It’s your word, not mine."
+    hb "But I’m sure you can figure, right? Since it’s me we’re talking about, if I’ve got nothing else good about me beyond gaming, and I can’t even do that--"
+    pc "Well, who said that?"
+    hb "Come on, grow a pair. Can you stop being so painfully dense?"
+    pc "No, ‘cause right now, I think you just want me to confirm how you feel about yourself. So you can feel justified about that."
+    hide ch_hb_neutral
+    show ch_hb_angry at leftgg
+    "Herbert blinks and recoils like I’ve actually insulted him or something."
+    hb "That’s…"
+    hb "That’s just dumb! Why would I ever wanna hear someone insult me?"
+    pc "I dunno. Either you’re a masochist or something worse."
+    hb "Y-you’re the bad one here! Frickin, posing questions back at me as if that’ll make a difference--"
+    pc "A difference for what? Why you don’t think you’re worth anything without gaming?"
+    hb "I never said--"
+    pc "Why do you think that?"
+    hb "Cause when I go to sleep, I--"
+    hb "Herbert cuts himself off, scowling."
+    pc "You have nightmares? That’s nothing to be ashamed of. I get ggthe ol’ “teeth falling out of my mouth” one all the time. It definitely sucks, but it’s not--"
+    hb "No. Shut up."
+    pc "…"
+    hb "…"
+    pc "…"
+    hb "…"
+    pc "…"
+    hb "…"
+    pc "…"
+    hide ch_hb_angry
+    show ch_hb_guilty at left
+    hb "...you can breathe, jeez."
+    "I let out the breath I had been holding."
+    hb "If you laugh, I’ll kill you, okay?"gg
+    pc "Alright, duly noted, edgelor--"
+    hb "In my dreams, when I look in a mirror or some shit, I see… myself. When I was a kid-- Like, nine, ten years old."
+    hb "And he- I- whoever it is says to me, h-he says, uhm."
+    hb "“...why are you this way? What did I do to become like you?”"
+    hb "“I’m really scared to turn into you.”"
+    hide ch_hb_guilty
+    show ch_hb_tears at left
+    hb "...that’s what he says."
+    "Herbert sits there for a moment, pulling at his cuticles and staring at the shapes in the floor as if they’re who he’s speaking to instead of me."
+    "I can’t do anything but gape for a moment, flustered as I fumble for words. All that I can force out, though, is an awkward:"
+    pc "I’m… sorry?"
+    hb "No, don’t, don’t frickin-- Don’t apologize."
+    "Herbert pulls off his hat, toying at it with his hands instead of picking at his skin. His fingers tease the ends of his hat, fraying the already worn edges further."
+    hb "That makes it weirder. I don’t want you to say sorry or any shit, I guess. I don’t want to spend my last full day alive feeling like some sort of loser."
+    pc "Then… what do you want, if you don’t mind my asking?"
+    pc "I can’t help if you don’t speak."
+    "Herbert lets out a humorless snort."
+    hb "That sure is the question, huh…"
+    hb "...I don’t know. I guess…"
+    hb "Part of me wants to ask you to just come out and tell me something like “it’s all going to be okay”, or “you’re not someone that your younger self would be ashamed of”, nothing cliche like that."
+    hb "I don’t really like that sort of cheap positive talk. I’m sure people mean well when they say that shit, but it just comes off as generic feel good stuff that they just say because they know it’s what you want to hear."
+    hb "Especially with the world ending tomorrow. People can say whatever they want to make you feel better and then give themselves a pat on the back after the fact like it means they’re a good person now, ‘cause they gave you ‘peace of mind’ that they don’t actually need to follow up on."
+    hb "They can make promises because they don’t need to keep them. So that means I won’t believe that they’d keep them in any other scenario."
+    pc "...that’s an awfully convoluted and pretentious way of saying ‘I don’t want to be comforted’."
+    "Herbert startles a bit, caught off guard in the middle of his emo boy reverie."
+    hb "I-I’m not--"
+    pc "Have you ever considered that maybe now’s the perfect time for people to be most honest about how they feel?"
+    pc "There’s no skin off my back if I told you that you suck. I didn’t need to spend time with you these last few days. I certainly had ample reason yesterday."
+    pc "I didn’t even know your name until a few days ago. And maybe that means I don’t know you perfectly, and I don’t know you well enough to tell you whether you’re good or not, mostly ‘cause I don’t really know who qualifies for that label."
+    pc "But if nothing else, you should take comfort in the fact that I made a conscious choice to hang out with you these last few days."
+    hb "…"
+    hb "…maybe you’re just doing that because you’re too lame to have people to hang out with yourself."
+    pc "Huh, guess I can’t argue with that."
+    "Saying so, I lift myself off from the cushioned arcade seat, wincing as it makes a noise too squishy to mean it’s clean."
+    pc "Well, see ya tomorrow."
+    hb "H-huh? You mean, you’re leaving?"
+    pc "I mean, I’m just tired."
+    pc "But more importantly, I think you are too. There’s no point in us milling around if you haven’t chewed on the words you need to chew on, right?"
+    hb "…"
+    hb "When did you become so…"
+    "Herbert shakes his head."
+    hb "N-nevermind. I’ll see you tomorrow, here, then."
+    hb "If you break that promise, I’ll for real kill you. Meteor won’t even have a chance to."
+    pc "Haha. I look forward to that, then."
+
 
 
 
@@ -1028,3 +1422,6 @@ label day4_end:
     jump day5_start
 
 label day5_start:
+    scene bg_newsroom
+    show ch_nm_frown
+    play music "audio/newssong.ogg" fadeout 1

@@ -1,22 +1,22 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/script.rpy", line 921, in script
-    jump day1_ls
-ScriptError: could not find label 'day1_ls'.
+  File "game/script.rpy", line 749, in script
+    jump day1_lh
+ScriptError: could not find label 'day1_lh'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/script.rpy", line 921, in script
-    jump day1_ls
+  File "game/script.rpy", line 749, in script
+    jump day1_lh
   File "/home/protodrew/Documents/renpy-7.3.5-sdk/renpy/ast.py", line 1697, in execute
     rv = renpy.game.script.lookup(target)
   File "/home/protodrew/Documents/renpy-7.3.5-sdk/renpy/script.py", line 898, in lookup
     raise ScriptError("could not find label '%s'." % str(original))
-ScriptError: could not find label 'day1_ls'.
+ScriptError: could not find label 'day1_lh'.
 
 Linux-5.4.0-7642-generic-x86_64-with-debian-bullseye-sid
 Ren'Py 7.3.5.606
-A Quarter Past 5 0.03
-Tue Oct  6 15:08:48 2020
+A Quarter Past 5 0.04
+Fri Oct  9 05:17:55 2020
