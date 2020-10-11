@@ -5,6 +5,7 @@ define mf = Character("Rosa", color="#37c1d3")
 define ow = Character("Arcade Owner", color="#37c1d3")
 define nm = Character("News", color="#60d67b")
 define route = "none"
+define bad = "false"
 
 
 label start:
@@ -33,7 +34,7 @@ label start:
     pc "{cps=25}...okay, uhm. Mrs…{/cps}"
     "My eyes trail down to her nametag, though it was hard to make out the lettering what with the vomit’s worth of Lisa Frank stickers encasing it."
     pc "… Rosie?"
-    ow "It's Rosa, dearie, and you already paid."
+    ow "It's Rsa, dearie, and you already paid."
     pc "Then why did you ask if I was sure I should be going here?"
     hide ch_owner_smug
     show ch_owner_laugh
@@ -99,33 +100,6 @@ label day1_tg:
     hide ch_gg_neutral
     show ch_gg_eyeroll
     gg "Pfft. Good Luck"
-
-    jump game_gg
-
-label game_gg:
-    scene bg_black
-    "This is a placeholder for the shooter arcade game that you will be playing. You'll actually win or lose the game, but for now you can pick."
-    menu:
-        "win SHOOTERGAME":
-            jump day1_wsg
-        "lose SHOOTERGAME":
-            jump day1_lsg
-
-
-label day1_gse:
-    scene bg_long_day1
-    show ch_gg_neutral
-    pc "U-uh, I think I’ll try going somewhere else for now…"
-    hide ch_gg_neutral
-    show ch_gg_smug
-
-    menu:
-        "GO TO ARCADEROOM1":
-            jump day1_hb
-        "GO TO ENTRANCE":
-            jump day1_m
-
-label day1_wsg:
     scene bg_long_day1
     show ch_gg_surprised
     $ route = "gg"
@@ -149,22 +123,20 @@ label day1_wsg:
     pc "I wonder if I’ll see her tomorrow…"
     jump day1_done
 
-label day1_lsg:
+
+label day1_gse:
     scene bg_long_day1
-    pc "Oh… I lost…"
+    show ch_gg_neutral
+    pc "U-uh, I think I’ll try going somewhere else for now…"
+    hide ch_gg_neutral
     show ch_gg_smug
-    gg "Eh, don’t feel too badly about it."
-    hide ch_gg_smug
 
     menu:
         "GO TO ARCADEROOM1":
             jump day1_hb
         "GO TO ENTRANCE":
             jump day1_m
-        "TRY AGAIN":
-            jump game_gg
 
-    jump day1_done
 
 label day1_m:
     scene bg_desk_day1
@@ -272,13 +244,16 @@ label day1_dnfo:
     jump game_hb
 
 label game_hb:
-    scene bg_black
-    "This is a placeholder for the pong arcade game that you will be playing. You'll actually win or lose the game, but for now you can pick."
+
+    "Heyo, pretend there is pong here, I'm still bug fixing it"
+
+    "Pick a route for this playtest"
+
     menu:
-        "Lose the game":
+        "WIN":
+            jump game_wp
+        "LOSE":
             jump day1_lp
-        "Win the game":
-            jump day1_wp
 
 
 label day1_lp:
@@ -1014,6 +989,7 @@ label day3_end:
 
 label day3_end2:
     scene bg_black
+    $ bad = "true"
     "{cps=25}2 days remain{/cps}"
     jump day4_end
 
@@ -1047,7 +1023,7 @@ label day4_mf:
 
     scene bg_desk_day1
 
-" Rosa isn’t at the counter when I first walk in today. In her place is a handmade sign with an amount of glitter that’s comparable to the avalanche that was on her nametag. There’s the words “FREE 4 ALL, JUST DONT BREAK ANYTHING >>>:((” scrawled across it in sharpie."
+"Rosa isn’t at the counter when I first walk in today. In her place is a handmade sign with an amount of glitter that’s comparable to the avalanche that was on her nametag. There’s the words “FREE 4 ALL, JUST DONT BREAK ANYTHING >>>:((” scrawled across it in sharpie."
 
 " I’m tempted to leave right then and there, maybe cut my losses and cash in on some tooth rotting smoothies since I don’t need to worry about my health anymore, when I hear a firm “a-hem” from behind me."
 show ch_owner_neutral
@@ -1101,11 +1077,11 @@ pc " Maybe I’m reading this wrong, but…"
 
 pc " You lie, and I notice, and I call you out on it. And you seem like you’d get upset if I didn’t, but I don’t even… really get why you lie in the first place."
 
-" Rosa takes a moment of pause at that, pulling at her lip with yellowed teeth as she contemplates me for a second. I resist the urge to shudder underneath her gaze."
+"Rosa takes a moment of pause at that, pulling at her lip with yellowed teeth as she contemplates me for a second. I resist the urge to shudder underneath her gaze."
 
 mf " Lemme tell you a lil’ tip I’ve learned over the years, kid."
 
-" Rosa puts her hands out to the side as if she’s measuring a fish at the market, her cigarette ggburning out between her fingers."
+"Rosa puts her hands out to the side as if she’s measuring a fish at the market, her cigarette ggburning out between her fingers."
 
 mf " Lying is a two-way street. You need someone to tell the lie, and someone to accept the lie."
 
@@ -1137,7 +1113,7 @@ mf " So how’s that. Are you alright with that sort of ‘payment’?"
 
 pc " No, I think that’s all kind of… BS, honestly."
 
-" Rosa startles, gaze stuttering over my face before she glances behind her as if she’s making sure it wasn’t someone else she was hearing."
+"Rosa: startled, gazes stuttering over my face before she glances behind her as if she’s making sure it wasn’t someone else she was hearing."
 
 " There's something oddly satisfying in seeing her taken genuinely off guard, in a way that’s different than when I merely startled her with cheap potshot comments."
 
@@ -1422,3 +1398,389 @@ label day5_start:
     scene bg_newsroom
     show ch_nm_frown
     play music "audio/newssong.ogg" fadeout 1
+
+    nm " As we count the final hours of this earth down, minute by minute, families around the world are spending their last moments together with their most important persons."
+
+    nm " We hope that you, dear viewer, are able to do the very same."
+
+    nm " I’m… going to go home. This will be the last time that XXXX News Airs. I hope you all can understand."
+
+    nm " With that… I bid you all good morning, and good luck"
+
+    scene bg_black
+    play music "audio/Day5.ogg" fadeout 1
+    pc "well, here I am again."
+
+    "It feels a little ridiculous to be here, now of all times. But, then again, it felt ridiculous to be here on every other day I was here, too. Just because the number of hours I have left are in the single digits doesn’t mean they have any more importance than any other hour I’ve spent here on earth."
+
+    if bad == "true":
+        jump day5_badend
+    elif route == "hb":
+        jump day5_hb
+    elif route == "gg":
+        jump day5_gg
+    elif route == "mf":
+        jump day5_mf
+        return
+
+label day5_badend:
+    scene bg_counter_day5
+    "But that doesn’t mean I find the pit in my stomach growing any smaller."
+
+    "Maybe ‘pit’ isn’t the right word; there’s a ‘something’ there, a distinctive difference from the hollowness that one might typically feel growing from a lack of something, making my lip curl."
+
+    pc "Irritation…"
+
+    "That’s probably it, that’s definitely it. More than anything else, more than any sort of fear or sorrow that I could be feeling today of all days, I find myself irritated at where I am right now."
+
+    "Then, there’s a growing hole of irritation in my stomach."
+
+    "My cheek feels wet, and I palm it away gently."
+
+    "Even though I spent all of yesterday lazing around in my room, I don’t feel any less tired than I did the day before that. If anything, this irritation only serves to further my exhaustion."
+
+    "I wasn’t able to make amends with [route]. But that’s okay, I think. It’s sad, to be sure, but there’s no awful consequence of that action beyond the fact that I’ll never see them again."
+
+    "I don’t say it like I don’t have any regrets. More than anything, I wish I was braver."
+
+    "But I can’t turn back time, and it probably wouldn’t be worth it to fix a small, petty thing like this. I can offer my condolences to the arcade, but that’s the most I can do to fix this situation."
+
+    "I inhale deeply, feeling the humidity of the air on my tongue. Already, now, I can taste the arid sootiness of the meteor approaching with rapid intensity; or maybe that’s just a placebo."
+
+    "Nonetheless, I strike up the courage to say:"
+
+    pc "Well, it was fun while it lasted."
+
+    "I speak the words to the empty air, letting them ring out before dragging my feet through the ground."
+
+    "If I’m fast enough, I should be able to make it home for one last nap before the meteor hits."
+
+    jump day5_end
+
+label day5_hb:
+show bg_corner_day5
+show ch_hb_neutral
+hb " Hey, are you just gonna stand there looking dumb?"
+
+hb " I mean, it’s no skin off my back if you wanna spend your last few hours looking this pathetic, but figured I’d at least ask so I don’t bring that regret into the afterlife."
+
+"Herbert’s standing by the entrance, the same awkward way I found him just yesterday."
+
+hb " Anyhow, it’s a-about time you showed up."
+
+pc " Oh, I didn’t realize I was keeping you waiting. I would’ve tried to wake up earlier had I known."
+
+hb " Th-that’s not--"
+
+"I laugh and shove him playfully to the side, to which he predictably grows upset at."
+
+"We sit down at a table inside and share a few more meaningless conversations about nothing. The hours tick by, and we’re still just… sitting here, hanging out. As friends."
+
+"Putting it lightly, it’s… really, really nice."
+
+"It’s only as the clock grows dangerously close to our final moment’s that Herbert becomes increasingly nonverbal, sweat visible on his forehead even in this awful lighting."
+
+pc " What’s on your mind?"
+
+hb " I. Uh."
+
+hb " ..."
+
+hb " ...I’ll be honest. I… I really, really don’t want to die."
+
+hb " I know you’re not like that. I don’t understand how you can smile so easily when the world is going to end; maybe you’re just suicidal? Which is your own issue and I can’t really delve into that, so I won’t, but…"
+
+hb " I’m-- Really scared of dying."
+
+"Herbert’s voice cracks, and he pauses, taking a moment to get his bearings before continuing on."
+
+hb " I didn’t know you for very long. And you didn’t know me for very long, either, but you were so nice to me."
+
+hb " I didn’t want to acknowledge that the world was ending. I don’t think most people did; which is weird, right? In all those books about huge world catastrophes, you always wonder why everyone isn’t panicking more and listening to the scientists. Guess I need to accept the loss on that one."
+
+hb " So, I think like everyone else here… it was easier to joke about it. Easier to just do random things and hope that it wouldn’t actually happen."
+
+hb " But, uh. "
+
+"He points towards the sky, and I follow his gaze upwards. Sure enough, the large, flaming rock is now visible to the naked eye, drowning the sun in its deep red color."
+
+"It feels like it’s harder to breathe by the second, and chances are, it probably is."
+
+"Maybe I’m dying, just sitting here. That’s not a non-possibility, given the state of the world."
+
+"And yet, I don’t feel any more concerned."
+
+hb " So, uh."
+
+hb " Even though I always acted kinda lame around you, and you saw me cry, which was really cringey…"
+
+hb " I’m. Glad I met you, I guess."
+
+hb " You’re cool."
+
+pc " Aw."
+
+pc " Well, you’re cool too, Herbert. And I feel the same way."
+
+pc " I spent my last days with you, and I don’t think I regret that."
+
+hb " Oh. Uh."
+
+hb " ‘o course. They were with me, so why wouldn’t you--"
+
+"He cuts himself off, sniffling violently as he shoves his arm across his face, trying to wipe away the tears starting to form in his eyes."
+
+"I open my arms out to the side, and after only a moment’s hesitation, he pushes himself forward into my grasp."
+
+"My shoulder begins to feel wet after only a few seconds."
+
+"Even though he can’t see me, I’m smiling, and I give him a firm pat on the back."
+
+jump day5_end
+
+label day5_gg:
+scene bg_long_day5
+show ch_gg_neutral
+gg " Hey! Uhm, uh. H-hey."
+
+" I turn to see Jade waving from just inside the arcade. I pay for my last ticket, nodding at Rosa before moving on to meet Jade in the entrance way."
+
+" She stands there for a moment, opening her mouth and gaping, struggling to formulate her words before shaking her head and motioning inside."
+
+" It’s only when we’re seated at one of the dirty tables used by kids to have a germfest of a birthday party feast that she manages to pull herself together enough to speak."
+
+gg " I want to preface this with the fact that I didn’t really expect to meet you in the first place."
+
+gg " Hell, I don’t know why I kept coming back. I just always really wanted that plushie, so I decided to make that the priority of my bucket list, and then… ugh."
+
+" She slaps her hand against the table, frustrated with herself."
+
+gg " I don’t know. I wanted you to leave me alone, but I kept on coming back to talk to you. So who knows, man."
+
+gg " But I do know why I’m here today. I’m really glad you ended up coming back to the arcade, because I don’t know what I would’ve done with myself otherwise."
+
+gg " So, uhm."
+
+" Awkwardly, she dips her head low enough to press against the table."
+
+gg " I’m really, really sorry about everything I said yesterday. It was mean and unwarranted, and I shouldn’t have acted like I was better than you or if you were suddenly bad or whatever."
+
+gg " S’was shitty. I’m sorry for offending you so badly."
+
+pc " I mean… I don’t think I was offended as much as I really just felt-- feel bad for you."
+
+pc " Maybe that comes off as high and mighty, and if so, I really apologize… but I don’t know how else to put it."
+
+gg " You feel bad… for me?"
+
+gg " Uhm. I don’t really think you should do that, haha. I can-- I can totally get someone like me being seen as super sympathetic, sure, but I think I’m a little too pathetic and a little too mean to be seen as someone pitiable."
+
+gg " Ha. Ha. "
+
+" She says it with such conviction that it’s impossible to not believe her."
+
+" Perhaps, if it had come from someone else, I could have taken it as the words of someone who was fishing for pity."
+
+gg " I just…"
+
+gg " I don’t really think anyone can like me. Sure, maybe I haven’t done any big crime, or anything super disgusting or anything, but I’m that sort of person who…"
+
+gg " It’s like that one kid in the class who no one likes. When you’re not around them, you feel bad for them, because no one likes them. Maybe you even think to yourself,''I really wish I could hang out with them more, because they deserve to have a friend'', or something like that."
+
+gg " But then you actually talk to them, and you remember why no one talks to them in the first place. It’s because they’re pathetic, and you don’t like being around them."
+
+gg " I really thought to myself, “if I ever have a friend, I’ll be really happy. That’s all I need.”"
+
+gg " But then you hung out with me, and you didn’t leave, and all I could feel was… angry?"
+
+gg " I was genuinely, super upset. I was mad, and I didn’t…"
+
+gg " I didn’t like you."
+
+gg " I don’t know why. I liked you when I first met you, and then the more you hung out with me, I only seemed to like you less and less, growing more and more frustrated with you as time drew on."
+
+gg " And I… I don’t know why. I’m sorry."
+
+gg " That’s really so pathetic and mean of me, haha. I’m sure you can tell why no one else wanted to hang out with me before you."
+
+pc " ...that’s…"
+
+gg " Shitty of me to say, I know, haha. If I had any money on me, I’d give you something to soften the blow. Slipped my mind. Whoops. Haha."
+
+pc " ...well, you clearly don’t like yourself, for one thing."
+
+pc " So maybe that self-hatred just extended onto me, for a bit."
+
+gg " ...huh?"
+
+pc " You hate yourself so much, and you’re so unused to people being nice to you."
+
+pc " But then I ended up being nice to you, and you couldn’t figure out why. So you thought ‘oh, it’s because they’re so pathetic’, or something like that. "
+
+pc " And I guess… me not having friends only emphasized that fact. Kind of reaffirmed your beliefs that actually if I like you, I must suck too."
+
+pc " So I can’t say I’m happy with all this, but I… I understand it, kind of."
+
+pc " So you don’t need to hate yourself for that, too. It’s kind of a little last minute to try fixing your views on yourself, toxic ones that you’ve clearly nurtured, even if not intentionally, but I guess… I want to give you a little bit of respite. "
+
+pc " I’m not mad at you, nor do I hate you, like I said. I just want you to understand that I do like you, and even at the end of the world, I really want to be your friend."
+
+pc " ...is that okay?"
+
+" As I’ve been speaking, Jade’s eyes have begun to water. She wipes at her nose with the back of her hand, unable to meet my gaze as her own struggles to find a proper place to look."
+
+" It’s only as I stop talking that she looks up at me in the expectant silence, chest fluttering slightly as she tries to keep her rapidly breaking voice from cracking. "
+
+gg " Y… yeah. "
+
+gg " You’re really nice. And I like being your friend, even if…"
+
+gg " ...even if I made it really difficult. Thank you for sticking by me."
+
+" I don’t answer that, not verbally."
+
+" Instead, I stick my hand out expectantly."
+
+" Trembling a little bit, she takes my hand in both of hers, shaking it firmly."
+
+jump day5_end
+
+label day5_mf:
+scene bg_counter_day5
+show ch_owner_neutral
+mf ": Hey, champ. You still came here to bid the world adieu, huh?"
+
+mf ": Imagine thinking it’s fun here, in this crummy lil’ place. Well, I can’t say I’m not happy that you’re here. "
+
+mf ": Yaaaay, I get to be smashed to smithereens with this random kid that shows up at my workplace that I met only a few days ago for the first time. How utterly non-pathetic."
+
+pc " That’s…"
+
+mf ": Wrong, I know. I’ve heard the more popular opinion is that the majority of everyone is going to be fried almost instantaneously by the massive heatwave that sweeps across the nation. Kinda like what happened in Pompeii, apparently."
+
+mf ": But I like the word smithereens, so I’m gonna use it, haha."
+
+pc " It’s, uh… a fun word, yeah."
+
+"Rosa laughs, slapping me on the back cheerily."
+
+" She chats on for a bit more, merrily working her way through several more one-sided conversations before I cut her off awkwardly."
+
+pc " Is there, uhm… something you wanted to talk about? With regards to yesterday?"
+
+mf ": ...with regards to yesterday, huh."
+
+mf ": I guess that’s probably reason enough for you to come here. Better get some closure before we both die, right?"
+
+mf ": …"
+
+mf ": It’s funny, I’ve turned thoughts like this over in my head for so long. I’ve been able to recite it all in my head so easily, but I never thought I’d have to tell anyone."
+
+mf ": Yet here I am. Trying to tell you, someone I barely know and barely have reason to speak to, but I’m stumbling over my words."
+
+mf ": It’s pathetic, really. Apologies."
+
+" She inhales deeply. I can’t find it within me to interrupt her; it’s probably not right to, anyway."
+
+" Slowly, carefully, navigating a minefield, she begins to speak."
+
+mf ": The short of it is, I saw my son kill himself. "
+
+mf ": Sucks, yeah, so bad. Haha. It’s been well over fifteen years, now, so I’ve had ample time to make my peace with it."
+
+mf ": I opened the door to their apartment, I saw him slip. And that was that."
+
+mf ": She describes the story shortly and succinctly, with little emotion. It’s a bit jarring."
+
+mf ": I’m a horrible mother, right? Because I didn’t save him. Because I didn’t see the signs beforehand, because I didn’t take the time to ask him if he was alright, if he was okay."
+
+mf ": His dad was never really part of the picture, so it’s not like I could blame it on him."
+
+mf ": If I… if I had just been a little bit faster, if I had been there a moment sooner, surely, I could’ve saved him--"
+
+" She cuts herself off, frowning as if she’s said too much. She breathes deeply, runs her fingers through her hair, and then continues on."
+
+mf ": But I wasn’t, and I didn’t. And so I’ve lived with this, now. Even inherited the arcade that he had run. "
+
+" For emphasis, she slaps the counter she’s leaning against."
+
+mf ": But I don’t have to live with it. Not anymore."
+
+mf ": So that’s why I think this is easier, since the world is ending."
+
+mf ": Of course, it would have been easier if I had died before now. Because then I could die thinking I was a truly good person. "
+
+mf ": And now I’m dying knowing I’m not, but at least I’m dying."
+
+" Her words sink with a heavy finality in my head. I’m not sure how to respond to that, not immediately, and pull my shoulders closer around my body as I contemplate what to say next."
+
+pc " If… if it’s any comfort, I’m glad that I got to meet you before I died."
+
+mf ": Really? I don’t think you cared about being dead."
+
+mf ": You’re different from the other kids walking about, and not in a cool way. You just seem so nonchalant about the end of the world while still acknowledging that it’s going to happen."
+
+mf ": I wouldn’t say you’re suicidal, at least, not with how you act. But the way you act is unnerving, to say the least. With how offhandedly you seem to hold all of it."
+
+mf ": You sure you’re right in the head?"
+
+" She laughs when she says this, but something in my heart feels… heavy."
+
+" Is there truth in her words? I’m not sure. Everything about the past few days has felt so surreal that I simply haven’t given it much thought."
+
+" Or maybe I haven’t wanted to give it any thought. I don’t want to acknowledge that there’s a difference, but there probably is."
+
+pc " ...it’s easier this way."
+
+mf " Hm?"
+
+mf " I mean, yes-- That is what I said. "
+
+mf " You had some wax in your ear? Need me to repeat myself with what little time is left?"
+
+pc " No, I got that, I just. Uh."
+
+pc " I think you’re right, to some extent. It’s easier not having to live with all of this."
+
+pc " My… my home life isn’t great. There’s a reason I’m hanging out with you instead of my parents or anyone my age when the world is ending."
+
+pc " So, uhm… "
+
+pc " Y-yeah…"
+
+" There’s something in my eye."
+
+" I rub at it with the palm of my hand, frustrated as my vision only continues to blur. I shift positions to better palm away at the itchy feeling."
+
+" It doesn’t subside. My breath catches and the air is heavy and everything feels like so much."
+
+mf " There, there."
+
+mf " pulls me into a hug. My head bumps against the pin on her chest, scraping against my face as I hiccup."
+
+pc " S-sorry, I was supposed to comfort you--"
+
+mf " You don’t need to comfort everyone, champ."
+
+mf ": Thank you for sharing that with me. I should’ve noticed earlier, I think."
+
+mf ": I’m sorry for being so self-centered. We can stay like this, if you want. "
+
+mf ": Is that alright with you?"
+
+" I can’t speak anymore. I just nod shakily, heart thumping away in my ears."
+
+" I can’t tell if it’s my brain that’s making the air sound like static, or the rapidly approaching meteor. Either way, it brings an overwhelming sense of peace to my mind as I cling tighter to Rosa"
+
+" She rubs my back firmly, and I close my eyes."
+
+jump day5_end
+
+label day5_end:
+    "Writing Director: Kiki Bajer
+    Art Director: Schuyler Pritchard
+    Lead Programmer: Drew James"
+    "Music provided from One Man symphony licensed under Attribution 4.0 International (CC BY 4.0)"
+    "Special thanks to Nathan Booth, Syrup and that picture of a possum screaming at his own ass"
+    show possum
+    "there he is"

@@ -2,9 +2,13 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 1366: end of line expected.
-    hb "If you laugh, I’ll kill you, okay?"gg
-                                           ^
+File "game/script.rpy", line 992: expected statement.
+    bad = "true"
+        ^
+
+File "game/script.rpy", line 1782: end of line expected.
+    show possum.jpeg
+               ^
 
 Ren'Py Version: Ren'Py 7.3.5.606
-Fri Oct  9 06:36:58 2020
+Sun Oct 11 19:41:48 2020
