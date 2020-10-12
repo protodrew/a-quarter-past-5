@@ -9,6 +9,11 @@ define bad = "false"
 
 
 label start:
+    scene bg_black
+    python:
+        name = renpy.input(_("What's your name?"))
+
+        name = name.strip() or __("Corey")
 
     scene bg_newsroom
     show ch_nm_frown
@@ -30,11 +35,11 @@ label start:
     pc "{cps=25}You make it sound kind of… sketchy.{/cps}"
     hide ch_owner_tired
     show ch_owner_smug
-    ow "Here? The ol’ NAMEOFARCADE? No, this place is as solemnly serious and trustworthy as it was twenty years ago, and I’d appreciate it if you treated it as such."
+    ow "Here? The ol’ Quarter Round? No, this place is as solemnly serious and trustworthy as it was twenty years ago, and I’d appreciate it if you treated it as such."
     pc "{cps=25}...okay, uhm. Mrs…{/cps}"
     "My eyes trail down to her nametag, though it was hard to make out the lettering what with the vomit’s worth of Lisa Frank stickers encasing it."
-    pc "… Rosie?"
-    ow "It's Rsa, dearie, and you already paid."
+    pc "… Poca?"
+    ow "It's Rosa, dearie, and you already paid."
     pc "Then why did you ask if I was sure I should be going here?"
     hide ch_owner_smug
     show ch_owner_laugh
@@ -102,10 +107,10 @@ label day1_tg:
     gg "Pfft. Good Luck"
     scene bg_long_day1
     show ch_gg_surprised
-    $ route = "gg"
-
-    gg "Oh… You actually. Won, huh."
+    $ route = "Jade"
     "With that, the metal clasp that had been holding the platypus down comes unhinged, letting it fall easily into my hands. It feels nice to have won something, but after hugging it tightly for a few seconds, I realize that I don’t actually want to lug this thing home."
+    gg "Oh… You actually. Won, huh."
+
     pc "Do you, uh, want this…?"
     hide ch_gg_surprised
     show ch_gg_flustered
@@ -115,7 +120,7 @@ label day1_tg:
     "I hand it over to her, and she blinks a few more times as she looks between me and the platypus plushie before clearing her throat."
     hide ch_gg_flustered
     show ch_gg_neutral
-    gg "Well, such a noble sacrifice demands a name in payment, at the very least. I’m GG, but you can just call me NICKNAME."
+    gg "Well, such a noble sacrifice demands a name in payment, at the very least: I’m Jadeself."
     hide ch_gg_neutral
     show ch_gg_smug
     gg "Maybe I’ll see you again before I die. Or not. Heh."
@@ -157,12 +162,13 @@ label day1_m:
 
 label day1_sa:
     scene bg_desk_day1
-    $ route = "mf"
+    $ route = "Rosa"
 
     show ch_owner_neutral
     pc "No, I want to hang out and talk with you for a bit, if that’s okay."
     mf "Oh, I’m most certainly okay with it. I’m just not sure if spending your time with a rackety ol’ woman like me is a wise investment on your part."
     pc "I dunno. You seem nice enough."
+    hide ch_owner_neutral
     show ch_owner_smug
     mf " I seem it, huh. But am I actually it… who’s to say, ufufu."
     hide ch_owner_smug
@@ -245,6 +251,236 @@ label day1_dnfo:
 
 label game_hb:
 
+init python:
+    class PongDisplayable(renpy.Displayable):
+
+        def __init__(self):
+
+            renpy.Displayable.__init__(self)
+
+            # The sizes of some of the images.
+            self.PADDLE_WIDTH = 12
+            self.PADDLE_HEIGHT = 95
+            self.PADDLE_X = 350
+            self.BALL_WIDTH = 15
+            self.BALL_HEIGHT = 15
+            self.COURT_TOP = 220
+            self.COURT_BOTTOM = 930
+
+            # Some displayables we use.
+            self.paddle = Solid("#ffffff", xsize=self.PADDLE_WIDTH, ysize=self.PADDLE_HEIGHT)
+            self.ball = Solid("#ffffff", xsize=self.BALL_WIDTH, ysize=self.BALL_HEIGHT)
+
+            # If the ball is stuck to the paddle.
+            self.stuck = True
+
+            # The positions of the two paddles.
+            self.playery = (self.COURT_BOTTOM - self.COURT_TOP) / 2
+            self.computery = self.playery
+
+            # The speed of the computer.
+            self.computerspeed = 380.0
+
+            # The position, delta-position, and the speed of the
+            # ball.
+            self.bx = self.PADDLE_X + self.PADDLE_WIDTH + 10
+            self.by = self.playery
+            self.bdx = .5
+            self.bdy = .5
+            self.bspeed = 350.0
+
+            # The time of the past render-frame.
+            self.oldst = None
+
+            # The winner.
+            self.winner = None
+
+        def visit(self):
+            return [ self.paddle, self.ball ]
+
+        # Recomputes the position of the ball, handles bounces, and
+        # draws the screen.
+        def render(self, width, height, st, at):
+
+            # The Render object we'll be drawing into.
+            r = renpy.Render(width, height)
+
+            # Figure out the time elapsed since the previous frame.
+            if self.oldst is None:
+                self.oldst = st
+
+            dtime = st - self.oldst
+            self.oldst = st
+
+            # Figure out where we want to move the ball to.
+            speed = dtime * self.bspeed
+            oldbx = self.bx
+
+            if self.stuck:
+                self.by = self.playery
+            else:
+                self.bx += self.bdx * speed
+                self.by += self.bdy * speed
+
+            # Move the computer's paddle. It wants to go to self.by, but
+            # may be limited by it's speed limit.
+            cspeed = self.computerspeed * dtime
+            if abs(self.by - self.computery) <= cspeed:
+                self.computery = self.by
+            else:
+                self.computery += cspeed * (self.by - self.computery) / abs(self.by - self.computery)
+
+            # Handle bounces.
+
+            # Bounce off of top.
+            ball_top = self.COURT_TOP + self.BALL_HEIGHT / 2
+            if self.by < ball_top:
+                self.by = ball_top + (ball_top - self.by)
+                self.bdy = -self.bdy
+
+                if not self.stuck:
+                    renpy.sound.play("audio/pongl", channel=0)
+
+            # Bounce off bottom.
+            ball_bot = self.COURT_BOTTOM - self.BALL_HEIGHT / 2
+            if self.by > ball_bot:
+                self.by = ball_bot - (self.by - ball_bot)
+                self.bdy = -self.bdy
+
+                if not self.stuck:
+                    renpy.sound.play("audio/pongl", channel=0)
+
+            # This draws a paddle, and checks for bounces.
+            def paddle(px, py, hotside):
+
+                # Render the paddle image. We give it an 800x600 area
+                # to render into, knowing that images will render smaller.
+                # (This isn't the case with all displayables. Solid, Frame,
+                # and Fixed will expand to fill the space allotted.)
+                # We also pass in st and at.
+                pi = renpy.render(self.paddle, width, height, st, at)
+
+                # renpy.render returns a Render object, which we can
+                # blit to the Render we're making.
+                r.blit(pi, (int(px), int(py - self.PADDLE_HEIGHT / 2)))
+
+                if py - self.PADDLE_HEIGHT / 2 <= self.by <= py + self.PADDLE_HEIGHT / 2:
+
+                    hit = False
+
+                    if oldbx >= hotside >= self.bx:
+                        self.bx = hotside + (hotside - self.bx)
+                        self.bdx = -self.bdx
+                        hit = True
+
+                    elif oldbx <= hotside <= self.bx:
+                        self.bx = hotside - (self.bx - hotside)
+                        self.bdx = -self.bdx
+                        hit = True
+
+                    if hit:
+                        renpy.sound.play("audio/blip", channel=1)
+                        self.bspeed *= 1.10
+
+            # Draw the two paddles.
+            paddle(self.PADDLE_X, self.playery, self.PADDLE_X + self.PADDLE_WIDTH)
+            paddle(width - self.PADDLE_X - self.PADDLE_WIDTH, self.computery, width - self.PADDLE_X - self.PADDLE_WIDTH)
+
+            # Draw the ball.
+            ball = renpy.render(self.ball, width, height, st, at)
+            r.blit(ball, (int(self.bx - self.BALL_WIDTH / 2),
+                          int(self.by - self.BALL_HEIGHT / 2)))
+
+            # Check for a winner.
+            if self.bx < -50:
+                self.winner = "Herbert"
+
+                # Needed to ensure that event is called, noticing
+                # the winner.
+                renpy.timeout(0)
+
+            elif self.bx > width + 50:
+                self.winner = "player"
+                renpy.timeout(0)
+
+            # Ask that we be re-rendered ASAP, so we can show the next
+            # frame.
+            renpy.redraw(self, 0)
+
+            # Return the Render object.
+            return r
+
+        # Handles events.
+        def event(self, ev, x, y, st):
+
+            import pygame
+
+            # Mousebutton down == start the game by setting stuck to
+            # false.
+            if ev.type == pygame.MOUSEBUTTONDOWN and ev.button == 1:
+                self.stuck = False
+
+                # Ensure the pong screen updates.
+                renpy.restart_interaction()
+
+            # Set the position of the player's paddle.
+            y = max(y, self.COURT_TOP)
+            y = min(y, self.COURT_BOTTOM)
+            self.playery = y
+
+            # If we have a winner, return him or her. Otherwise, ignore
+            # the current event.
+            if self.winner:
+                return self.winner
+            else:
+                raise renpy.IgnoreEvent()
+
+screen pong():
+
+    default pong = PongDisplayable()
+
+    add "bg_pong_field"
+
+    add pong
+
+    text _("Player"):
+        xpos 240
+        xanchor 0.5
+        ypos 25
+        size 40
+
+    text _("Herbert"):
+        xpos (1920 - 240)
+        xanchor 0.5
+        ypos 25
+        size 40
+
+    if pong.stuck:
+        text _("Click to Begin"):
+            xalign 0.5
+            ypos 50
+            size 40
+
+label play_pong:
+
+    window hide  # Hide the window and  quick menu while in pong
+    $ quick_menu = False
+
+    call screen pong
+
+    $ quick_menu = True
+    window show
+
+
+if _return == "Herbert":
+
+    jump day1_lp
+
+else:
+
+    jump day1_wp
+
+
     "Heyo, pretend there is pong here, I'm still bug fixing it"
 
     "Pick a route for this playtest"
@@ -254,6 +490,7 @@ label game_hb:
             jump game_wp
         "LOSE":
             jump day1_lp
+
 
 
 label day1_lp:
@@ -275,7 +512,7 @@ label day1_lp:
 
 label day1_wp:
     scene bg_corner_day1
-    $ route = "hb"
+    $ route = "Herbert"
 
     pc "Oh! I won!"
     show ch_hb_shocked
@@ -311,11 +548,11 @@ label day2_start:
     nm "So do what you can; take that leap."
     nm "It’s not like you have enough time to reach the bottom if you end up falling, anyway."
 
-    if route == "hb":
+    if route == "Herbert":
         jump day2_hb
-    elif route == "gg":
+    elif route == "Jade":
         jump day2_gg
-    elif route == "mf":
+    elif route == "Rosa":
         jump day2_m
 
 label day2_m:
@@ -323,15 +560,18 @@ label day2_m:
     scene bg_desk_day2
     show ch_owner_neutral
     pc "So... Do I still need to pay if I just want to hang out with you the entire day?"
+    hide ch_owner_neutral
+    show ch_owner_laugh
     "To her credit, Rosa blinks a bit before laughing merrily at what I’ve said."
     mf "I didn’t think you’d actually take me up on my offer, champ. Seems like kind of a waste to spend these last few days hanging out with an old woman of a stranger you don’t know."
     pc "And it feels like kind of a waste to be running an arcade during a time like this, too, yet here you are."
+    hide ch_owner_laugh
+    show ch_owner_neutral
     mf "Fair enough. Alrighty then, kid."
-    hide ch_owner_neutral
     "She reaches over and pulls over a seat that I hadn’t seen before, some splintered stool thing that looks like it’ll collapse underneath my weight. Nonetheless, she pats it expectantly."
+    hide ch_owner_neutral
     "The day passes by a little tenser than yesterday’s had gone. It’s not as if she’s ignoring me, per se, but she prioritizes the customers at the desk instead, entertaining splintering conversations before waving them off indoors."
     "We barely exchange words for even an hour, what with how hard she’s working, and even then we only get a break because the morning rush has slowed down."
-    show ch_owner_neutral
     mf "Haaa… I’m really getting too old for this sort of stuff, right?"
     mf "Good thing we’ll all be dead soon, heh!"
     "She laughs uproariously at this, and all I can do is blink. After a moment, she coughs into her hand."
@@ -556,11 +796,11 @@ label day3_start:
 
     nm "What do you say when there’s only two days left? Can you say anything at all?"
 
-if route == "hb":
+if route == "Herbert":
     jump day3_hb
-elif route == "gg":
+elif route == "Jade":
     jump day3_gg
-elif route == "mf":
+elif route == "Rosa":
     jump day3_mf
     return
 
@@ -719,7 +959,7 @@ label day3_gg:
 
 menu:
     "Call her out on it":
-        jump day3_co
+        jump day3_ns
     "let her have it":
         jump day3_lh
 
@@ -1011,11 +1251,11 @@ nm " What I’ve realized is that the only person who has to be content with my 
 nm " So that begs the question; what does it mean for you to be alright with yourself? Have you been someone you - and I do mean you, not someone else - is proud of?"
 
 
-if route == "hb":
+if route == "Herbert":
     jump day4_hb
-elif route == "gg":
+elif route == "Jade":
     jump day4_gg
-elif route == "mf":
+elif route == "Rosa":
     jump day4_mf
     return
 
@@ -1275,36 +1515,38 @@ label day4_hb:
     show ch_hb_neutral at left
     show ch_owner_neutral at right
     mf "Look, you can stay if you wanna stay or you can go if you wanna go but you need to make up your mind, champ. I can’t just have you loitering around here and pissin’ off custo--"
-    hb "PRO!"
+    hb "[name]!"
     "He perks up as he sees me approach before coughing in his hand like he’s embarrassed, rolling his shoulders back and glancing off to the side."
-    hb "I-I mean, PRO. Hey. ‘bout time your sorry ass showed up."
+    hb "I-I mean, [name]. Hey. ‘bout time your sorry ass showed up."
     mf "If they’re the reason that you were being such a brat, then yes, I agree; it is about time they showed up."
     mf "Now come along you two. Go in and do some ‘gaming’ or whatever it is you kids like to waste your time doing during the end of the world."
     hb "You say this like you’re not running an arcade."
     mf "What’d I say? Scram!"
-    "With that, M ushers us inside, making shooing noises with one hand and reaching for the pack of M*rlboro’s in her breast pocket with her other."
+    "With that, Rosa ushers us inside, making shooing noises with one hand and reaching for the pack of M*rlboro’s in her breast pocket with her other."
     "If nothing else, Herbert seems… out of it. For a second the flustered expression on his face makes me concerned, but he just spins around once he’s dragged me to a quiet enough corner of the arcade, plopping himself down on one of the seats. I sit next to him."
+    scene bg_corner_day4
+    show ch_hb_neutral
     hb "We need to. Uh. Talk."
     pc "Convenient that we’re already doing that, right now."
     hb "No, I-I mean-- About yesterday. Why…"
     hb "Why didn’t you leave me there? You probably should’ve done that."
     pc "I mean, I left to go home afterwards, so--"
     hide ch_hb_neutral
-    show ch_hb_guilty at left
+    show ch_hb_guilty
     hb "That’s not what I mean, and you know it! Ugh, I frickin’--"
     "Herbert groans and bites his thumbnail, eyes darting from side to side like he’s afraid of… something."
     hb "I’m gonna say two things, alright?"
     hb "One: I’m. I’m, uh."
     hb "…"
     hide ch_hb_guilty
-    show ch_hb_embarrassed at left
+    show ch_hb_embarrassed
     hb "I’msorryforblowingyouoffokthing number TWO."
     hb "What you did yesterday was dumb. And cringey."
     pc "I know, I’m disappointed in the lack of creativity in my insults as well."
     hb "What? No, that’s not--"
     "Herbert shakes his head."
     hide ch_hb_embarrassed
-    show ch_hb_guilty at left
+    show ch_hb_guilty
     hb "I just don’t think… I think what you did was a waste of time."
     hb "Especially since you beat me. They were all so happy about it."
     pc "Really? Why do they hate you so much?"
@@ -1315,7 +1557,7 @@ label day4_hb:
     hb "Come on, grow a pair. Can you stop being so painfully dense?"
     pc "No, ‘cause right now, I think you just want me to confirm how you feel about yourself. So you can feel justified about that."
     hide ch_hb_neutral
-    show ch_hb_angry at left
+    show ch_hb_angry
     "Herbert blinks and recoils like I’ve actually insulted him or something."
     hb "That’s…"
     hb "That’s just dumb! Why would I ever wanna hear someone insult me?"
@@ -1336,7 +1578,7 @@ label day4_hb:
     hb "…"
     pc "…"
     hide ch_hb_angry
-    show ch_hb_guilty at left
+    show ch_hb_guilty
     hb "...you can breathe, jeez."
     "I let out the breath I had been holding."
     hb "If you laugh, I’ll kill you, okay?"
@@ -1346,7 +1588,7 @@ label day4_hb:
     hb "“...why are you this way? What did I do to become like you?”"
     hb "“I’m really scared to turn into you.”"
     hide ch_hb_guilty
-    show ch_hb_tears at left
+    show ch_hb_tears
     hb "...that’s what he says."
     "Herbert sits there for a moment, pulling at his cuticles and staring at the shapes in the floor as if they’re who he’s speaking to instead of me."
     "I can’t do anything but gape for a moment, flustered as I fumble for words. All that I can force out, though, is an awkward:"
@@ -1415,16 +1657,16 @@ label day5_start:
 
     if bad == "true":
         jump day5_badend
-    elif route == "hb":
+    elif route == "Herbert":
         jump day5_hb
-    elif route == "gg":
+    elif route == "Jade":
         jump day5_gg
-    elif route == "mf":
+    elif route == "Rosa":
         jump day5_mf
         return
 
 label day5_badend:
-    scene bg_counter_day5
+    scene bg_desk_day5
     "But that doesn’t mean I find the pit in my stomach growing any smaller."
 
     "Maybe ‘pit’ isn’t the right word; there’s a ‘something’ there, a distinctive difference from the hollowness that one might typically feel growing from a lack of something, making my lip curl."
@@ -1646,137 +1888,139 @@ gg " ...even if I made it really difficult. Thank you for sticking by me."
 jump day5_end
 
 label day5_mf:
-scene bg_counter_day5
+scene bg_desk_day5
 show ch_owner_neutral
-mf ": Hey, champ. You still came here to bid the world adieu, huh?"
+mf "Hey, champ. You still came here to bid the world adieu, huh?"
 
-mf ": Imagine thinking it’s fun here, in this crummy lil’ place. Well, I can’t say I’m not happy that you’re here. "
+mf "Imagine thinking it’s fun here, in this crummy lil’ place. Well, I can’t say I’m not happy that you’re here. "
 
-mf ": Yaaaay, I get to be smashed to smithereens with this random kid that shows up at my workplace that I met only a few days ago for the first time. How utterly non-pathetic."
+mf "Yaaaay, I get to be smashed to smithereens with this random kid that shows up at my workplace that I met only a few days ago for the first time. How utterly non-pathetic."
 
 pc " That’s…"
 
-mf ": Wrong, I know. I’ve heard the more popular opinion is that the majority of everyone is going to be fried almost instantaneously by the massive heatwave that sweeps across the nation. Kinda like what happened in Pompeii, apparently."
+mf "Wrong, I know. I’ve heard the more popular opinion is that the majority of everyone is going to be fried almost instantaneously by the massive heatwave that sweeps across the nation. Kinda like what happened in Pompeii, apparently."
 
-mf ": But I like the word smithereens, so I’m gonna use it, haha."
+mf "But I like the word smithereens, so I’m gonna use it, haha."
 
-pc " It’s, uh… a fun word, yeah."
+pc "It’s, uh… a fun word, yeah."
 
 "Rosa laughs, slapping me on the back cheerily."
 
-" She chats on for a bit more, merrily working her way through several more one-sided conversations before I cut her off awkwardly."
+"She chats on for a bit more, merrily working her way through several more one-sided conversations before I cut her off awkwardly."
 
-pc " Is there, uhm… something you wanted to talk about? With regards to yesterday?"
+pc "Is there, uhm… something you wanted to talk about? With regards to yesterday?"
 
-mf ": ...with regards to yesterday, huh."
+mf "...with regards to yesterday, huh."
 
-mf ": I guess that’s probably reason enough for you to come here. Better get some closure before we both die, right?"
+mf "I guess that’s probably reason enough for you to come here. Better get some closure before we both die, right?"
 
-mf ": …"
+mf "…"
 
-mf ": It’s funny, I’ve turned thoughts like this over in my head for so long. I’ve been able to recite it all in my head so easily, but I never thought I’d have to tell anyone."
+mf "It’s funny, I’ve turned thoughts like this over in my head for so long. I’ve been able to recite it all in my head so easily, but I never thought I’d have to tell anyone."
 
-mf ": Yet here I am. Trying to tell you, someone I barely know and barely have reason to speak to, but I’m stumbling over my words."
+mf "Yet here I am. Trying to tell you, someone I barely know and barely have reason to speak to, but I’m stumbling over my words."
 
-mf ": It’s pathetic, really. Apologies."
+mf "It’s pathetic, really. Apologies."
 
-" She inhales deeply. I can’t find it within me to interrupt her; it’s probably not right to, anyway."
+"She inhales deeply. I can’t find it within me to interrupt her; it’s probably not right to, anyway."
 
-" Slowly, carefully, navigating a minefield, she begins to speak."
+"Slowly, carefully, navigating a minefield, she begins to speak."
 
-mf ": The short of it is, I saw my son kill himself. "
+mf "The short of it is, I saw my son kill himself. "
 
-mf ": Sucks, yeah, so bad. Haha. It’s been well over fifteen years, now, so I’ve had ample time to make my peace with it."
+mf "Sucks, yeah, so bad. Haha. It’s been well over fifteen years, now, so I’ve had ample time to make my peace with it."
 
-mf ": I opened the door to their apartment, I saw him slip. And that was that."
+mf "I opened the door to their apartment, I saw him slip. And that was that."
 
-mf ": She describes the story shortly and succinctly, with little emotion. It’s a bit jarring."
+mf "She describes the story shortly and succinctly, with little emotion. It’s a bit jarring."
 
-mf ": I’m a horrible mother, right? Because I didn’t save him. Because I didn’t see the signs beforehand, because I didn’t take the time to ask him if he was alright, if he was okay."
+mf "I’m a horrible mother, right? Because I didn’t save him. Because I didn’t see the signs beforehand, because I didn’t take the time to ask him if he was alright, if he was okay."
 
-mf ": His dad was never really part of the picture, so it’s not like I could blame it on him."
+mf "His dad was never really part of the picture, so it’s not like I could blame it on him."
 
-mf ": If I… if I had just been a little bit faster, if I had been there a moment sooner, surely, I could’ve saved him--"
+mf "If I… if I had just been a little bit faster, if I had been there a moment sooner, surely, I could’ve saved him--"
 
-" She cuts herself off, frowning as if she’s said too much. She breathes deeply, runs her fingers through her hair, and then continues on."
+"She cuts herself off, frowning as if she’s said too much. She breathes deeply, runs her fingers through her hair, and then continues on."
 
-mf ": But I wasn’t, and I didn’t. And so I’ve lived with this, now. Even inherited the arcade that he had run. "
+mf "But I wasn’t, and I didn’t. And so I’ve lived with this, now. Even inherited the arcade that he had run. "
 
-" For emphasis, she slaps the counter she’s leaning against."
+"For emphasis, she slaps the counter she’s leaning against."
 
-mf ": But I don’t have to live with it. Not anymore."
+mf "But I don’t have to live with it. Not anymore."
 
-mf ": So that’s why I think this is easier, since the world is ending."
+mf "So that’s why I think this is easier, since the world is ending."
 
-mf ": Of course, it would have been easier if I had died before now. Because then I could die thinking I was a truly good person. "
+mf "Of course, it would have been easier if I had died before now. Because then I could die thinking I was a truly good person. "
 
-mf ": And now I’m dying knowing I’m not, but at least I’m dying."
+mf "And now I’m dying knowing I’m not, but at least I’m dying."
 
-" Her words sink with a heavy finality in my head. I’m not sure how to respond to that, not immediately, and pull my shoulders closer around my body as I contemplate what to say next."
+"Her words sink with a heavy finality in my head. I’m not sure how to respond to that, not immediately, and pull my shoulders closer around my body as I contemplate what to say next."
 
-pc " If… if it’s any comfort, I’m glad that I got to meet you before I died."
+pc "If… if it’s any comfort, I’m glad that I got to meet you before I died."
 
-mf ": Really? I don’t think you cared about being dead."
+mf "Really? I don’t think you cared about being dead."
 
-mf ": You’re different from the other kids walking about, and not in a cool way. You just seem so nonchalant about the end of the world while still acknowledging that it’s going to happen."
+mf "You’re different from the other kids walking about, and not in a cool way. You just seem so nonchalant about the end of the world while still acknowledging that it’s going to happen."
 
-mf ": I wouldn’t say you’re suicidal, at least, not with how you act. But the way you act is unnerving, to say the least. With how offhandedly you seem to hold all of it."
+mf "I wouldn’t say you’re suicidal, at least, not with how you act. But the way you act is unnerving, to say the least. With how offhandedly you seem to hold all of it."
 
-mf ": You sure you’re right in the head?"
+mf "You sure you’re right in the head?"
 
-" She laughs when she says this, but something in my heart feels… heavy."
+"She laughs when she says this, but something in my heart feels… heavy."
 
-" Is there truth in her words? I’m not sure. Everything about the past few days has felt so surreal that I simply haven’t given it much thought."
+"Is there truth in her words? I’m not sure. Everything about the past few days has felt so surreal that I simply haven’t given it much thought."
 
-" Or maybe I haven’t wanted to give it any thought. I don’t want to acknowledge that there’s a difference, but there probably is."
+"Or maybe I haven’t wanted to give it any thought. I don’t want to acknowledge that there’s a difference, but there probably is."
 
-pc " ...it’s easier this way."
+pc "...it’s easier this way."
 
-mf " Hm?"
+mf "Hm?"
 
-mf " I mean, yes-- That is what I said. "
+mf "I mean, yes-- That is what I said. "
 
-mf " You had some wax in your ear? Need me to repeat myself with what little time is left?"
+mf "You had some wax in your ear? Need me to repeat myself with what little time is left?"
 
-pc " No, I got that, I just. Uh."
+pc "No, I got that, I just. Uh."
 
-pc " I think you’re right, to some extent. It’s easier not having to live with all of this."
+pc "I think you’re right, to some extent. It’s easier not having to live with all of this."
 
-pc " My… my home life isn’t great. There’s a reason I’m hanging out with you instead of my parents or anyone my age when the world is ending."
+pc "My… my home life isn’t great. There’s a reason I’m hanging out with you instead of my parents or anyone my age when the world is ending."
 
-pc " So, uhm… "
+pc "So, uhm… "
 
-pc " Y-yeah…"
+pc "Y-yeah…"
 
-" There’s something in my eye."
+"There’s something in my eye."
 
-" I rub at it with the palm of my hand, frustrated as my vision only continues to blur. I shift positions to better palm away at the itchy feeling."
+"I rub at it with the palm of my hand, frustrated as my vision only continues to blur. I shift positions to better palm away at the itchy feeling."
 
-" It doesn’t subside. My breath catches and the air is heavy and everything feels like so much."
+"It doesn’t subside. My breath catches and the air is heavy and everything feels like so much."
 
-mf " There, there."
+mf "There, there."
 
-mf " pulls me into a hug. My head bumps against the pin on her chest, scraping against my face as I hiccup."
+mf "pulls me into a hug. My head bumps against the pin on her chest, scraping against my face as I hiccup."
 
-pc " S-sorry, I was supposed to comfort you--"
+pc "S-sorry, I was supposed to comfort you--"
 
-mf " You don’t need to comfort everyone, champ."
+mf "You don’t need to comfort everyone, champ."
 
-mf ": Thank you for sharing that with me. I should’ve noticed earlier, I think."
+mf "Thank you for sharing that with me. I should’ve noticed earlier, I think."
 
-mf ": I’m sorry for being so self-centered. We can stay like this, if you want. "
+mf "I’m sorry for being so self-centered. We can stay like this, if you want. "
 
-mf ": Is that alright with you?"
+mf "Is that alright with you?"
 
-" I can’t speak anymore. I just nod shakily, heart thumping away in my ears."
+"I can’t speak anymore. I just nod shakily, heart thumping away in my ears."
 
-" I can’t tell if it’s my brain that’s making the air sound like static, or the rapidly approaching meteor. Either way, it brings an overwhelming sense of peace to my mind as I cling tighter to Rosa"
+"I can’t tell if it’s my brain that’s making the air sound like static, or the rapidly approaching meteor. Either way, it brings an overwhelming sense of peace to my mind as I cling tighter to Rosa"
 
-" She rubs my back firmly, and I close my eyes."
+"She rubs my back firmly, and I close my eyes."
 
 jump day5_end
 
 label day5_end:
+    scene bg_black
+    "Thanks for playing!"
     "Writing Director: Kiki Bajer
     Art Director: Schuyler Pritchard
     Lead Programmer: Drew James"
