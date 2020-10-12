@@ -1,11 +1,13 @@
-define pc = Character("Player", color="#d44e8e")
+define pc = Character("[name]", color="#d44e8e")
 define gg = Character("Jade", color="#4f12b2")
 define hb = Character("Herbert", color="#f45578")
+define ab = Character("Angry looking boy", color="#f45578")
 define mf = Character("Rosa", color="#37c1d3")
 define ow = Character("Arcade Owner", color="#37c1d3")
 define nm = Character("News", color="#60d67b")
 define route = "none"
 define bad = "false"
+define day = ""
 
 
 label start:
@@ -18,7 +20,7 @@ label start:
     scene bg_newsroom
     show ch_nm_frown
     play music "audio/newssong.ogg"
-    nm "with grim faces that the world’s greatest minds have told us to wrap up any unfinished business that we might be having."
+    nm "-- with grim faces that the world’s greatest minds have told us to wrap up any unfinished business that we might be having."
     nm "Hug your loved ones, confess to those that you never had the chance to. Eat the foods you always were curious about, visit that place you’ve been meaning to."
     nm "H***, maybe try and beat that high score you’ve always been meaning to. God knows you won’t have another chance to once Friday arrives."
     nm "...am I allowed to say that on air? H***?"
@@ -62,14 +64,14 @@ label start:
 label day1_hb:
     scene bg_corner_day1
 
-    "I decided to make my way over to ARCADEROOM1. A lot of the PvP games are over here, and I figured it might be fun to try those out."
+    "I decided to make my way over to the First Arcade Room. A lot of the PvP games are over here, and I figured it might be fun to try those out."
     "There weren’t many people milling about, most of them enamored in doing their own thing or playing in pairs, but there was one guy who seemed to be…"
     pc "Are you… playing with yourself?"
     show ch_hb_angry
-    hb "Haa? You got a problem with that?"
+    ab "Haa? You got a problem with that?"
     "The boy turns away from his game of Pong, his shoulders raising as he channels all the energy of the angry, wet kitten that he seems to be."
     pc "N-no, that’s fine, I just was--"
-    hb "Fu-- F-frick off, man."
+    ab "Fu-- F-frick off, man."
 
     menu:
         " FU-FRICK OFF":
@@ -82,7 +84,7 @@ label day1_hb:
 label day1_gg:
     scene bg_long_day1
 
-    "ARCADEROOM2 is a lot more single-player centric, so you don’t really see people interacting with each other here. I thought it would be easier to breathe and do my own thing, and yet…"
+    "the Second Arcade Room is a lot more single-player centric, so you don’t really see people interacting with each other here. I thought it would be easier to breathe and do my own thing, and yet…"
     "What stands out to me, more than anything else, is the comically large platypus doll plopped on top of the SHOOTERGAME console in the middle of the room."
     "The most shocking thing, really, is that it hasn’t been plucked up and taken away yet, but closer inspection reveals that it’s been chained down to the console in order to prevent such highway robberies."
     show ch_gg_neutral
@@ -137,7 +139,7 @@ label day1_gse:
     show ch_gg_smug
 
     menu:
-        "GO TO ARCADEROOM1":
+        "GO TO the First Arcade Room":
             jump day1_hb
         "GO TO ENTRANCE":
             jump day1_m
@@ -215,9 +217,9 @@ label day1_ng:
     mf "Oh, that’s quite alright. Hope you have fun!"
 
     menu:
-        "GO TO ARCADEROOM1":
+        "GO TO the First Arcade Room":
             jump day1_hb
-        "GO TO ARCADEROOM2":
+        "GO TO the Second Arcade Room":
             jump day1_gg
 
 label day1_fo:
@@ -225,7 +227,7 @@ label day1_fo:
     "I decided I wasn’t going to deal with this when I didn’t have that many days left to live, and decided to go somewhere else. "
 
     menu:
-        "GO TO ARCADEROOM2":
+        "GO TO the Second Arcade Room":
             jump day1_gg
         "GO TO ENTRANCE":
             jump day1_m
@@ -244,7 +246,7 @@ label day1_dnfo:
     pc "I-I mean, if you’re busy, that’s fine and everything--"
     hide ch_hb_shocked
     show ch_hb_smug
-    hb "No, if you want me to beat your ass to a pulp, I’m more than glad to do some public service. Might even count as a good deed, teaching you a lesson."
+    ab "No, if you want me to beat your ass to a pulp, I’m more than glad to do some public service. Might even count as a good deed, teaching you a lesson."
     "I just want to play some games, man…"
 
     jump game_hb
@@ -470,9 +472,9 @@ label play_pong:
 
     $ quick_menu = True
     window show
-
-
-if _return == "Herbert":
+if day == "2":
+    jump day2_pd
+elif _return == "Herbert":
 
     jump day1_lp
 
@@ -481,26 +483,15 @@ else:
     jump day1_wp
 
 
-    "Heyo, pretend there is pong here, I'm still bug fixing it"
-
-    "Pick a route for this playtest"
-
-    menu:
-        "WIN":
-            jump game_wp
-        "LOSE":
-            jump day1_lp
-
-
 
 label day1_lp:
 
     scene bg_corner_day1
     pc "Oh… I lost…"
     show ch_hb_smug
-    hb "Heh. Well, it’s to be expected, after all. Don’t, like, kill yourself over it. "
+    ab "Heh. Well, it’s to be expected, after all. Don’t, like, kill yourself over it. "
 
-    "Gamers are weird… I wonder if I’ll see him tomorrow."
+
 
     menu:
         "TRY AGAIN":
@@ -516,17 +507,17 @@ label day1_wp:
 
     pc "Oh! I won!"
     show ch_hb_shocked
-    hb "No… No way…"
+    ab "No… No way…"
     " I turn to the other boy, expecting to exchange some sort of firm handshake or at least an awkward acknowledgment that I’d won, but he looks like he’s on the verge of throwing up."
     hide ch_hb_shocked
     show ch_hb_tears
-    hb "This… can’t be real."
+    ab "This… can’t be real."
     pc "...are you okay? I-it’s just a game."
     pc "I-I just had beginner’s luck, right? So you don’t need to look so… sick over all this."
     "The boy doesn’t respond for a bit, clutching the sides of his arms for a second and breathing funny before shaking his head."
     hide ch_hb_tears
     show ch_hb_embarrassed
-    hb "Yeah, right… this was nothing. Didn’t even matter. Just dumb luck, heh."
+    ab "Yeah, right… this was nothing. Didn’t even matter. Just dumb luck, heh."
     "Mumbling these things to himself, the boy began to stumble his way out of the arcade. I watched him go for a bit before shaking my head."
     hide ch_hb_embarrassed
     pc "Gamers are weird… I wonder if I’ll see him tomorrow."
@@ -697,7 +688,7 @@ label day2_gg:
 label day2_hb:
     play music "audio/Day2.ogg" fadeout 1
     scene bg_corner_day2
-    "I haven’t even finished buying a ticket for the day from Rosa when Herbert comes dashing around the corner, smoke smothered by the way his sneakers skid across the floor as he throws an accusatory finger in my direction."
+    "I haven’t even finished buying a ticket for the day from Rosa when the bow I now know is named Herbert comes dashing around the corner, smoke smothered by the way his sneakers skid across the floor as he throws an accusatory finger in my direction."
     show ch_hb_angry at right
     hb "Y-you!!"
     pc "Me?"
@@ -736,7 +727,11 @@ label day2_hb:
     hb "B-because I am! I refuse to let things end the way they did!"
     pc "And you say you aren’t an anime protag…"
     "Despite his words, we set upon the nearest game console in earnest. Though I defeated him soundly last time, he seems to have approached some sort of solace in his own head and doesn’t look like he’s going to cry this time around if I beat him."
-    "(PONG GAME AGAIN outcome doesnt matter)"
+    $ day = "2"
+    jump game_hb
+
+label day2_pd:
+
     "When the game has finished, Herbert leans back and laughs heartily from besides me."
     pc "So I take it you had fun?"
     hb "Did I? Did I--"
@@ -1066,7 +1061,7 @@ label day3_mf:
 
     "I flip the poster over. The smiling red meteor on the front feels like a mockery of the one that hangs heavy in the sky above."
 
-    "Yeah, it’s kinda dumb to be encouraging more stress on myself, I know."
+    mf "Yeah, it’s kinda dumb to be encouraging more stress on myself, I know."
 
     "As if she had read my mind, Rosa sighs from besides me, rubbing the back of her neck. I blink in surprise."
 
@@ -1142,7 +1137,7 @@ label day3_co:
 
     "I turn the words over in my mind a few times before daring to call out:"
 
-    "So I can’t tell… do you have a kid or not?"
+    pc "So I can’t tell… do you have a kid or not?"
     hide ch_owner_laugh
     show ch_owner_mean
     "She doesn’t… freeze, per se, but her fingers fumble with the bills she’s counting. It’s a small enough hiccup that if I hadn’t been paying close attention, I don’t think I would’ve caught sight of it."
@@ -1208,7 +1203,9 @@ label day3_ls:
 
     mf "Oh, nothing, nothing. Listen, kiddo."
 
-    mf "You’ve offered me a great deal of entertainment, but I think it’d be in your best interests to hang out with more interesting people from now on, alright? And not in the arcade. You really should be expanding your range of entertainment; experience things that you hadn’t really had a chance to beforehand."
+    mf "You’ve offered me a great deal of entertainment, but I think it’d be in your best interests to hang out with more interesting people from now on, alright? "
+
+    mf "And not in the arcade. You really should be expanding your range of entertainment; experience things that you hadn’t really had a chance to beforehand."
 
     pc "It’s fine! I really enjoy talking with y--"
 
@@ -1341,7 +1338,9 @@ mf " “Before the world was announced to end?” Oh, long before that. But that
 
 mf " My own personal happiness doesn’t really matter. Why do you think I’m runngging an arcade when I should be enjoying these last few days of my life? Seems kind of stupid, don’t you think?"
 
-mf " But I don't care, not exactly. I can’t even really say that I enjoy seeing people being happy here. I told myself for a while that I do, but it’s probably not true anymore. The only thing keeping me here is the fact that the longer I work here, the longer I can stave off any guilt I feel."
+mf " But I don't care, not exactly. I can’t even really say that I enjoy seeing people being happy here. I told myself for a while that I do, but it’s probably not true anymore. "
+
+mf "The only thing keeping me here is the fact that the longer I work here, the longer I can stave off any guilt I feel."
 
 mf " So in the end, it’s my son’s fault. Because he died, and I’m still here."
 
@@ -1353,7 +1352,7 @@ mf " So how’s that. Are you alright with that sort of ‘payment’?"
 
 pc " No, I think that’s all kind of… BS, honestly."
 
-"Rosa: startled, gazes stuttering over my face before she glances behind her as if she’s making sure it wasn’t someone else she was hearing."
+"Rosa, startles, gazes stuttering over my face before she glances behind her as if she’s making sure it wasn’t someone else she was hearing."
 
 " There's something oddly satisfying in seeing her taken genuinely off guard, in a way that’s different than when I merely startled her with cheap potshot comments."
 
@@ -1651,10 +1650,10 @@ label day5_start:
 
     scene bg_black
     play music "audio/Day5.ogg" fadeout 1
-    pc "well, here I am again."
+    pc "Well, here I am again."
 
-    "It feels a little ridiculous to be here, now of all times. But, then again, it felt ridiculous to be here on every other day I was here, too. Just because the number of hours I have left are in the single digits doesn’t mean they have any more importance than any other hour I’ve spent here on earth."
-
+    "It feels a little ridiculous to be here, now of all times. But, then again, it felt ridiculous to be here on every other day I was here, too. "
+    "Just because the number of hours I have left are in the single digits doesn’t mean they have any more importance than any other hour I’ve spent here on earth."
     if bad == "true":
         jump day5_badend
     elif route == "Herbert":
@@ -1738,7 +1737,8 @@ hb " I’m-- Really scared of dying."
 
 hb " I didn’t know you for very long. And you didn’t know me for very long, either, but you were so nice to me."
 
-hb " I didn’t want to acknowledge that the world was ending. I don’t think most people did; which is weird, right? In all those books about huge world catastrophes, you always wonder why everyone isn’t panicking more and listening to the scientists. Guess I need to accept the loss on that one."
+hb " I didn’t want to acknowledge that the world was ending. I don’t think most people did; "
+hb "which is weird, right? In all those books about huge world catastrophes, you always wonder why everyone isn’t panicking more and listening to the scientists. Guess I need to accept the loss on that one."
 
 hb " So, I think like everyone else here… it was easier to joke about it. Easier to just do random things and hope that it wouldn’t actually happen."
 
@@ -1998,7 +1998,7 @@ pc "Y-yeah…"
 
 mf "There, there."
 
-mf "pulls me into a hug. My head bumps against the pin on her chest, scraping against my face as I hiccup."
+"Rosa pulls me into a hug. My head bumps against the pin on her chest, scraping against my face as I hiccup."
 
 pc "S-sorry, I was supposed to comfort you--"
 
