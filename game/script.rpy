@@ -12,11 +12,11 @@ define day = ""
 
 label start:
     scene bg_black
+    "This game comes with a CW for mentions of sucide, death, and depression"
     python:
         name = renpy.input(_("What's your name?"))
 
         name = name.strip() or __("Corey")
-
     scene bg_newsroom
     show ch_nm_frown
     play music "audio/newssong.ogg"
@@ -63,7 +63,7 @@ label start:
 
 label day1_hb:
     scene bg_corner_day1
-
+    show bg_corner_day1_comet.gif
     "I decided to make my way over to the First Arcade Room. A lot of the PvP games are over here, and I figured it might be fun to try those out."
     "There weren’t many people milling about, most of them enamored in doing their own thing or playing in pairs, but there was one guy who seemed to be…"
     pc "Are you… playing with yourself?"
@@ -2026,5 +2026,5 @@ label day5_end:
     Lead Programmer: Drew James"
     "Music provided from One Man symphony licensed under Attribution 4.0 International (CC BY 4.0)"
     "Special thanks to Nathan Booth, Syrup and that picture of a possum screaming at his own ass"
-    show possum
+    show possum at top
     "there he is"
