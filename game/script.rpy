@@ -85,7 +85,7 @@ label day1_gg:
     scene bg_long_day1
 
     "the Second Arcade Room is a lot more single-player centric, so you don’t really see people interacting with each other here. I thought it would be easier to breathe and do my own thing, and yet…"
-    "What stands out to me, more than anything else, is the comically large platypus doll plopped on top of the console in the middle of the room."
+    "What stands out to me, more than anything else, is the comically large platypus doll plopped on top of the SHOOTERGAME console in the middle of the room."
     "The most shocking thing, really, is that it hasn’t been plucked up and taken away yet, but closer inspection reveals that it’s been chained down to the console in order to prevent such highway robberies."
     show ch_gg_neutral
     gg "You’ve got to beat the high score to get it."
@@ -122,7 +122,7 @@ label day1_tg:
     "I hand it over to her, and she blinks a few more times as she looks between me and the platypus plushie before clearing her throat."
     hide ch_gg_flustered
     show ch_gg_neutral
-    gg "Well, such a noble sacrifice demands a name in payment, at the very least: I’m Jade."
+    gg "Well, such a noble sacrifice demands a name in payment, at the very least: I’m Jadeself."
     hide ch_gg_neutral
     show ch_gg_smug
     gg "Maybe I’ll see you again before I die. Or not. Heh."
@@ -596,18 +596,18 @@ label day2_m:
 label day2_gg:
     play music "audio/Day2.ogg" fadeout 1
     scene bg_long_day1
-    show ch_gg_neutral
+    show ch_gg_neutral at right
     "Jade’s in the same place where I saw her last, albeit minus the platypus plushie in her arms."
     hide ch_gg_neutral
-    show ch_gg_angry
+    show ch_gg_angry at right
     "We make eye contact across the room only for her to flinch and look away."
-    pc "Hey, that’s no way to treat a new friend, is it?"
+    "Hey, that’s no way to treat a new friend, is it?"
     hide ch_gg_angry
-    show ch_gg_surprised
+    show ch_gg_surprised at right
     gg "W-wha…"
     gg "We’re not, we’re not friends--!"
     hide ch_gg_surprised
-    show ch_gg_flustered
+    show ch_gg_flustered at right
     "She cuts herself off as if she had broken some unspoken vow of not talking to me to herself, pulling at the fishnets on her arms as she looks away."
     gg "...thanks for the plush, again. He’s at home, if you were wondering."
     gg "N-not that you would, ‘cause that would be weird, right? Haa…"
@@ -615,10 +615,10 @@ label day2_gg:
     gg "He’s just a plush…"
     "She says that, but looks relieved as she pulls some hair behind her ear. Her eyes dart around, looking for a way to continue the conversation."
     hide ch_gg_flustered
-    show ch_gg_neutral
+    show ch_gg_neutral at right
     gg "Hey, uh… what’s that you’ve got on your jacket?"
     pc "Huh? Oh, you mean this thing I’ve got on my zipper?"
-    "I pull the zipper up, getting a better look of the charm that’s fastened there. It’s a cheap little honeybee thing that I got as an extra from inside a cereal box."
+    gg "I pull the zipper up, getting a better look of the charm that’s fastened there. It’s a cheap little honeybee thing that I got as an extra from inside a cereal box."
     "I’m honestly impressed with how long it’s survived. One of the eyes has been worn off and the edges are frayed, but the honeybee smiles up at me with its misshaped smile nonetheless."
     pc "S’just a lil trinket, I guess. Why? Is it from some franchise you like or something?"
     "Jade leans in a little bit to take a closer look at the thing before shaking her head."
@@ -660,7 +660,6 @@ label day2_gg:
     "I think I should be impressed with how well Herbert handles the fight, but it might just be that “you look cooler when you’re next to someone bad at something” feeling."
     gg "Aaaand that’s where I’m going to call it."
     "Herbert is not subtle in his joy over winning, whooping and hollering obnoxiously. Still, he gives Jade a quick handshake and me a weak high-five before running off to entertain himself with something else."
-    hide ch_hb_smug
     gg "There he goes. I don’t know how he has that sort of energy; he’s older than me."
     gg "Anyways. Sorry that I didn’t even end up talking to you much, but I think this is where I’m going to call it quits for today."
     hide ch_gg_neutral
@@ -956,7 +955,7 @@ label day3_gg:
 menu:
     "Call her out on it":
         jump day3_ns
-    "Let her have it":
+    "let her have it":
         jump day3_lh
 
 
@@ -1459,15 +1458,13 @@ pc " That seems like an excessively cruel and dramatic, especially at the end of
 
 gg " Because that’s what everyone else does, isn’t it?"
 
-gg " If you’re just stringing me along because you think it’s fun to screw with someone’s feelings, then I’m sick of it! "
-gg "I’m tired of it and I’d rather you be honest with me now so I can rebound by tomorrow then have the last thought on my mind be how angry I am at myself for falling for this shit!"
+gg " If you’re just stringing me along because you think it’s fun to screw with someone’s feelings, then I’m sick of it! I’m tired of it and I’d rather you be honest with me now so I can rebound by tomorrow then have the last thought on my mind be how angry I am at myself for falling for this shit!"
 
 gg " The first day, I could believe. Alright. Whatever. Maybe you’re one of those people who gets off doing random acts of kindness."
 
 gg " Second day, okay. Pushing it, but that’s fine, too. You just didn’t know me super well yet, needed to realize how much I sucked before leaving."
 
-gg " Third day was ridiculous. I couldn’t understand why you hadn’t-- why you didn’t leave. You should have left, after getting to know me, and after that..."
-gg "I was like “what the hell is wrong with you?” and decided to take matters into my own hands because at least then, I could believe that I had cut the connection off myself instead of you just tossing me to the side eventually."
+gg " Third day was ridiculous. I couldn’t understand why you hadn’t-- why you didn’t leave. You should have left, after getting to know me, and after that, I was like “what the hell is wrong with you?” and decided to take matters into my own hands because at least then, I could believe that I had cut the connection off myself instead of you just tossing me to the side eventually."
 
 gg " But you didn’t even leave then. Which means that you’re just lying to me through your teeth and this entire time you’ve been pretending, stringing me along because you wouldn’t be here otherwise."
 
@@ -1830,8 +1827,7 @@ gg " I just…"
 
 gg " I don’t really think anyone can like me. Sure, maybe I haven’t done any big crime, or anything super disgusting or anything, but I’m that sort of person who…"
 
-gg " It’s like that one kid in the class who no one likes. When you’re not around them, you feel bad for them, because no one likes them. "
-gg "Maybe you even think to yourself,''I really wish I could hang out with them more, because they deserve to have a friend'', or something like that."
+gg " It’s like that one kid in the class who no one likes. When you’re not around them, you feel bad for them, because no one likes them. Maybe you even think to yourself,''I really wish I could hang out with them more, because they deserve to have a friend'', or something like that."
 
 gg " But then you actually talk to them, and you remember why no one talks to them in the first place. It’s because they’re pathetic, and you don’t like being around them."
 
