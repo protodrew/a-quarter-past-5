@@ -22,14 +22,13 @@ define gui.show_name = True
 
 ## The version of the game.
 
-define config.version = "0.04"
+define config.version = "0.90"
 
 
 ## Text that is placed on the game's about screen. Place the text between the
 ## triple-quotes, and leave a blank line between paragraphs.
 
-define gui.about = _p("""
-""")
+define gui.about = _("Created by Drew, Kiki, and Skye")
 
 
 ## A short name for the game used for executables and directories in the built
