@@ -63,7 +63,6 @@ label start:
 
 label day1_hb:
     scene bg_corner_day1
-    show bg_corner_day1_comet.gif
     "I decided to make my way over to the First Arcade Room. A lot of the PvP games are over here, and I figured it might be fun to try those out."
     "There weren’t many people milling about, most of them enamored in doing their own thing or playing in pairs, but there was one guy who seemed to be…"
     pc "Are you… playing with yourself?"

@@ -1,13 +1,13 @@
-Tue Oct 13 14:30:11 2020
+Tue Oct 13 14:48:04 2020
 Linux-5.4.0-7642-generic-x86_64-with-debian-bullseye-sid
 Ren'Py 7.3.5.606
  
 
-Bootstrap to the start of init.init took 0.05s
+Bootstrap to the start of init.init took 0.06s
 Early init took 0.00s
 Loader init took 0.01s
 Loading error handling took 0.02s
-Loading script took 0.24s
+Loading script took 0.27s
 Loading save slot metadata. took 0.01s
 Loading persistent took 0.00s
 
@@ -15,7 +15,7 @@ File "game/script.rpy", line 66: end of line expected.
     show bg_corner_day1_comet.gif
                              ^
 DPI scale factor: 1.000000
-Interface start took 0.61s
+Interface start took 0.69s
 
 primary display bounds: (0, 0, 1920, 1080)
 swap interval: 1 frames
@@ -439,7 +439,7 @@ Texture testing:
 - 2048px textures work.
 Root FBO is: 0
 FBO Maximum Texture Size: 2048
-Total time until interface ready: 1.06865906715s
+Total time until interface ready: 1.19525098801s
 
 primary display bounds: (0, 0, 1920, 1080)
 swap interval: 1 frames
