@@ -1,21 +1,39 @@
-Tue Oct 13 14:48:04 2020
+Wed Oct 14 22:43:55 2020
 Linux-5.4.0-7642-generic-x86_64-with-debian-bullseye-sid
 Ren'Py 7.3.5.606
  
 
-Bootstrap to the start of init.init took 0.06s
+Bootstrap to the start of init.init took 0.05s
 Early init took 0.00s
 Loader init took 0.01s
 Loading error handling took 0.02s
-Loading script took 0.27s
-Loading save slot metadata. took 0.01s
+Loading script took 0.13s
+Loading save slot metadata. took 0.02s
 Loading persistent took 0.00s
-
-File "game/script.rpy", line 66: end of line expected.
-    show bg_corner_day1_comet.gif
-                             ^
+Importing _renpysteam: ImportError('No module named _renpysteam',)
+Running init code took 0.04s
+Loading analysis data took 0.01s
+Analyze and compile ATL took 0.00s
+Index archives took 0.00s
+Backing up script files to '/home/protodrew/.renpy/backups/a-quarter-past-5':
+Dump and make backups. took 0.04s
+Cleaning cache took 0.00s
+Making clean stores took 0.00s
+Initial gc. took 0.02s
 DPI scale factor: 1.000000
-Interface start took 0.69s
+Creating interface object took 0.06s
+Cleaning stores took 0.00s
+Init translation took 0.02s
+Build styles took 0.00s
+Load screen analysis took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.05s
+Prepare screens took 0.06s
+Save pyanalysis. took 0.00s
+Save bytecode. took 0.05s
+Running _start took 0.00s
+Performance test:
+Interface start took 0.02s
 
 primary display bounds: (0, 0, 1920, 1080)
 swap interval: 1 frames
@@ -439,7 +457,9 @@ Texture testing:
 - 2048px textures work.
 Root FBO is: 0
 FBO Maximum Texture Size: 2048
-Total time until interface ready: 1.19525098801s
+Total time until interface ready: 0.758074998856s
+- Target is 5 frames in 0.333333333333 seconds.
+- Frame drawn at 0.000000 seconds.
 
 primary display bounds: (0, 0, 1920, 1080)
 swap interval: 1 frames
@@ -447,3 +467,8 @@ Windowed mode.
 Screen sizes: virtual=(1920, 1080) physical=(1920, 1019) drawable=(1920, 1019)
 Root FBO is: 0
 FBO Maximum Texture Size: 2048
+- Frame drawn at 0.010296 seconds.
+- Frame drawn at 0.012363 seconds.
+- Frame drawn at 0.013935 seconds.
+- Frame drawn at 0.019408 seconds.
+- 0.019408 seconds to render 5 frames.
