@@ -270,8 +270,8 @@ init python:
             self.PADDLE_X = 350
             self.BALL_WIDTH = 15
             self.BALL_HEIGHT = 15
-            self.COURT_TOP = 220
-            self.COURT_BOTTOM = 930
+            self.COURT_TOP = 210
+            self.COURT_BOTTOM = 940
 
             # Some displayables we use.
             self.paddle = Solid("#ffffff", xsize=self.PADDLE_WIDTH, ysize=self.PADDLE_HEIGHT)
@@ -339,22 +339,22 @@ init python:
             # Handle bounces.
 
             # Bounce off of top.
-            ball_top = self.COURT_TOP + self.BALL_HEIGHT / 2
+            ball_top = self.COURT_TOP - 25 + self.BALL_HEIGHT / 2
             if self.by < ball_top:
                 self.by = ball_top + (ball_top - self.by)
                 self.bdy = -self.bdy
 
                 if not self.stuck:
-                    renpy.sound.play("audio/pongl", channel=0)
+                    renpy.sound.play("audio/pongl.ogg", channel=0)
 
             # Bounce off bottom.
-            ball_bot = self.COURT_BOTTOM - self.BALL_HEIGHT / 2
+            ball_bot = self.COURT_BOTTOM + 25 - self.BALL_HEIGHT / 2
             if self.by > ball_bot:
                 self.by = ball_bot - (self.by - ball_bot)
                 self.bdy = -self.bdy
 
                 if not self.stuck:
-                    renpy.sound.play("audio/pongl", channel=0)
+                    renpy.sound.play("audio/pongl.ogg", channel=0)
 
             # This draws a paddle, and checks for bounces.
             def paddle(px, py, hotside):
@@ -398,14 +398,14 @@ init python:
                           int(self.by - self.BALL_HEIGHT / 2)))
 
             # Check for a winner.
-            if self.bx < -50:
+            if self.bx < 330:
                 self.winner = "Herbert"
 
                 # Needed to ensure that event is called, noticing
                 # the winner.
                 renpy.timeout(0)
 
-            elif self.bx > width + 50:
+            elif self.bx > width - 330:
                 self.winner = "player"
                 renpy.timeout(0)
 
