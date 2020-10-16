@@ -147,7 +147,7 @@ define config.save_directory = "AQuarterPast5-1600545374"
 ##
 ## The icon displayed on the taskbar or dock.
 
-define config.window_icon = "gui/window_icon.png"
+define config.window_icon = "gui/Window_Icon.png"
 
 
 ## Build configuration #########################################################

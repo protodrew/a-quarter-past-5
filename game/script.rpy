@@ -36,12 +36,12 @@ label start:
     play music "audio/Day1.ogg" fadeout 1
     show ch_owner_tired
     ow "I mean, I appreciate the business, hun, but are you sure you want to be spending your time here?"
-    pc "{cps=25}Should I… not be?{/cps}"
-    pc "{cps=25}You make it sound kind of… sketchy.{/cps}"
+    pc "Should I… not be?"
+    pc "You make it sound kind of… sketchy."
     hide ch_owner_tired
     show ch_owner_smug
     ow "Here? The ol’ Quarter Round? No, this place is as solemnly serious and trustworthy as it was twenty years ago, and I’d appreciate it if you treated it as such."
-    pc "{cps=25}...okay, uhm. Mrs…{/cps}"
+    pc "...okay, uhm. Mrs…"
     "My eyes trail down to her nametag, though it's hard to make out the lettering around the vomit’s worth of Lisa Frank stickers encasing it."
     pc "… Poca?"
     ow "It's Rosa, dearie, and you already paid."
@@ -202,7 +202,7 @@ label day1_sa:
     show ch_owner_smug
     mf "Just ‘cause the meteor’s gonna destroy earth doesn’t mean I’m gonna die with it. Ya never know. Gotta plan for that long term."
     pc "I don't think that's..."
-    pc "{cps=10}...{/cps}"
+    pc "{cps=10}..."
     pc " ...well, I guess I can’t complain."
     mf "Tell ya what. If you keep on coming here consistently, we can hang out more and I can let you in on a few more trade secrets, huh?"
     hide ch_owner_smug
@@ -538,7 +538,7 @@ label day1_wp:
 
 label day1_done:
     scene bg_black
-    "{cps=25}4 Days Remain{/cps}"
+    "4 Days Remain"
     jump day2_start
 
 label day2_start:
@@ -831,7 +831,7 @@ label day2_pd:
 
     label day2_done:
         scene bg_black
-        "{cps=25}3 Days Remain{/cps}"
+        "3 Days Remain"
         jump day3_start
 
 label day3_start:
@@ -1240,13 +1240,13 @@ label day3_ls:
 
 label day3_end:
     scene bg_black
-    "{cps=25}2 days remain{/cps}"
+    "2 days remain"
     jump day4_start
 
 label day3_end2:
     scene bg_black
     $ bad = "true"
-    "{cps=25}2 days remain{/cps}"
+    "2 days remain"
     jump day4_end
 
 label day4_start:
@@ -1503,7 +1503,7 @@ gg "Oh."
 "There’s something in her mind that just… clicks, there. Something that elicits such a sigh of understanding from her that there’s something big I’m afraid I’ve missed."
 
 gg "So you’re just hanging out with me because you’re as pathetic as me."
-hide ch_gg_tears
+hide ch_gg_neutral
 show ch_gg_smug
 gg "You’re hanging out with me because you don’t have any other friends, and I’m a good bottom o’ the barrel pick."
 
@@ -1655,7 +1655,7 @@ label day4_hb:
 
 label day4_end:
     scene bg_black
-    "{cps=25}1 day remains{/cps}"
+    "1 day remains"
     jump day5_start
 
 label day5_start:
@@ -1714,7 +1714,7 @@ label day5_badend:
     "I speak the words to the empty air, letting them ring out before dragging my feet across the ground."
     scene bg_black
     "If I’m fast enough, I should be able to make it home for one last nap before the meteor hits."
-
+    "{cps=8}The End{/cps}"
     jump day5_end
 
 label day5_hb:
@@ -1772,6 +1772,7 @@ label day5_hb:
     "My shoulder begins to feel wet after only a few seconds."
     "Even though he can’t see me, I’m smiling, and I give him a firm pat on the back."
     scene cs_hb
+    "{cps=8}The End{/cps}"
     jump day5_end
 
 label day5_gg:
@@ -1896,6 +1897,7 @@ show ch_gg_tears:
 
 " Trembling a little bit, she takes my hand in both of hers, shaking it firmly."
 scene cs_gg
+"{cps=8}The End{/cps}"
 jump day5_end
 
 label day5_mf:
@@ -1988,6 +1990,7 @@ label day5_mf:
     "Either way, it brings an overwhelming sense of peace to my mind as I cling tighter to Rosa"
     "She rubs my back firmly, and I close my eyes."
     scene cs_owner
+    "{cps=8}The End{/cps}"
     jump day5_end
 
 label day5_end:
