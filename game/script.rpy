@@ -614,7 +614,7 @@ label day2_m:
 
 label day2_gg:
     play music "audio/Day2.ogg" fadeout 1
-    scene bg_long_day1
+    scene bg_long_day2
     show ch_gg_neutral at right
     "Jade’s in the same place where I saw her last, albeit minus the platypus plushie in her arms."
     hide ch_gg_neutral
@@ -638,47 +638,65 @@ label day2_gg:
     gg "Hey, uh… what’s that you’ve got on your jacket?"
     pc "Huh? Oh, you mean this thing I’ve got on my zipper?"
     gg "I pull the zipper up, getting a better look of the charm that’s fastened there. It’s a cheap little honeybee thing that I got as an extra from inside a cereal box."
-    "I’m honestly impressed with how long it’s survived. One of the eyes has been worn off and the edges are frayed, but the honeybee smiles up at me with its misshaped smile nonetheless."
+    "I’m honestly impressed with how long it’s survived. One of the eyes has been worn off and the edges are frayed,"
+    "but the honeybee smiles up at me with its misshaped smile nonetheless."
     pc "S’just a lil trinket, I guess. Why? Is it from some franchise you like or something?"
     "Jade leans in a little bit to take a closer look at the thing before shaking her head."
     gg "I guess… I don’t really expect people to be so open about liking stuff like this."
     gg "Isn’t it a little embarrassing?"
-    pc "Eh, not really. Though it’s probably because I don’t really hang out with people enough to think it’s embarrassing."
+    pc "Not really, but probably because I don’t really hang out with people enough to think it’s embarrassing."
     gg "…"
     gg "That’s just… really sad."
-    "She says that, but some part of her looks… weirdly impressed by the fact that I can be so open about this. I think she wants to comment on it before someone else bursts through the door."
-    show ch_hb_neutral at left
+    "She says that, but some part of her looks… weirdly impressed by the fact that I can be so open about this."
+    "I think she wants to comment on it before someone else bursts through the door."
+    show ch_hb_neutral at left:
+        xzoom -1.0
     hb "Where are-- Oh, there, huh?"
     hide ch_gg_neutral
     show ch_gg_eyeroll at right
     "A boy that I think I might’ve seen milling about the arcade yesterday marches forward to the two of us. Jade’s already sighing, massaging her temples prematurely."
     gg "I’m not going to play another round with you, Herbert."
     hide ch_hb_neutral
-    show ch_hb_hello at left
+    show ch_hb_hello at left:
+        xzoom -1.0
     hb "W-who said I was going to ask you to fight me?"
     gg "Oh, I’m sorry. What is it that you needed me for?"
+    hide ch_hb_hello
+    show ch_hb_hello at left
+
     hb "…"
+    hide ch_hb_hello
+    show ch_hb_guilty at left:
+        xzoom -1.0
     hb "...well,"
     gg "Yeah, I thought so."
     "Jade sighs deeply, then sighs again as she looks me up and down with a vague look of disdain on her face."
     gg "Herbert, I’m hanging out with someone, so I can’t be your punching bag to give you an ego boost."
-    hide ch_hb_hello
-    show ch_hb_angry at left
+    hide ch_hb_guilty
+    show ch_hb_angry at left:
+        xzoom -1.0
     hb "That’s not-- I play completely fair and square against you!"
     gg "But you know I’m really bad at this, so you just pick an easy target."
     gg "W-well…"
     hide ch_gg_eyeroll
-    show ch_gg_neutral at right
+    show ch_gg_neutral at right:
+        xzoom -1.0
     "Jade laughs as Herbert sulks, but ultimately pulls down his hat over his eyes playfully as she makes her way over to one of the arcade stations."
     gg "C’mon, I’ll play one round with you. For the road."
     hide ch_hb_angry
-    show ch_hb_smug at left
+    show ch_hb_smug at left:
+        xzoom -1.0
     hb "Ah-- Hell yeah!!!"
     "Herbert perks up noticeably at that, and I watch the two of them play a few rounds of some generic fighting game."
     "I don’t know much about it, but I can tell Jade is… not that good. At the very least, her health bar goes down way faster than it does Herbert’s."
-    "I think I should be impressed with how well Herbert handles the fight, but it might just be that “you look cooler when you’re next to someone bad at something” feeling."
+    "I think I should be impressed with how well Herbert handles the fight, but it might just be that you look cooler when you’re next to someone bad at something."
     gg "Aaaand that’s where I’m going to call it."
-    "Herbert is not subtle in his joy over winning, whooping and hollering obnoxiously. Still, he gives Jade a quick handshake and me a weak high-five before running off to entertain himself with something else."
+    hide ch_hb_smug
+    show ch_hb_laugh at left:
+        xzoom -1.0
+    "Herbert is not subtle in his joy over winning, whooping and hollering obnoxiously."
+    "Still, he gives Jade a quick handshake and me a weak high-five before running off to entertain himself with something else."
+    hide ch_hb_laugh
     gg "There he goes. I don’t know how he has that sort of energy; he’s older than me."
     gg "Anyways. Sorry that I didn’t even end up talking to you much, but I think this is where I’m going to call it quits for today."
     hide ch_gg_neutral
@@ -695,9 +713,6 @@ label day2_gg:
     pc "Ehh, you make it sound like hanging out with me is a chore! I’d like to think I’m at least a little entertaining to be around."
     gg "A-alright, alright, jeez. I’ll see you tomorrow, alright?"
     gg "‘Cause you’re fun to be around or whatever."
-    pc "Man, you sound like every cliche of a tsundere to exist."
-    gg "What… what does that even mean?"
-    pc "Eh, don’t worry about it."
     pc "See you tomorrow, pal! Let’s hope the meteor doesn’t try to push up its schedule, right?"
     "With that, I wave her off. Despite everything, I really do hope I’ll see her again tomorrow."
 
@@ -984,15 +999,14 @@ label day3_gg:
 
     "Jade stifles something that’s either a cough or a laugh or both. I smile cheekily and move to the game that I had played with her beforehand."
 
-    "INSERT ANOTHER ROUND OF MINIGAME HERE; DOESNT MATTER OUTCOME"
-
     "It’s as I’m finishing up the game that I feel a tug on my jacket."
 
-    "Initially, I think it’s just that it’s been caught on something; it’s an old jacket with tons of loose threads, after all. I guess I just got way more into the game than I had initially realized."
+    "Initially, I think it’s just that it’s been caught on something; it’s an old jacket with tons of loose threads, after all."
+    "I guess I just got way more into the game than I had initially realized."
 
     "Without looking, I pull on it to try and get it unstuck. The tugging stops, just for a moment, before returning to a staticked pulling pattern at my side."
 
-"I frown, turning to properly unstick the jacket from whatever it’s stuck to when I pause and realize the real problem."
+"I frown, turning to unstick the jacket from whatever it’s stuck to when I pause and realize the problem."
 
 "It isn’t stuck; Jade is trying to steal it."
 
@@ -1016,24 +1030,28 @@ hide ch_gg_neutral
 show ch_gg_flustered
 
 "Jade’s face distorts for a second before settling on a smug, vaguely nervous expression."
-
+hide ch_gg_flustered
+show ch_gg_smug
 gg "Jeez, I got cocky, huh? Should’ve waited for a better time to do that."
 
 gg "Yeah, I sure was. And what’re you gonna do about it?"
-
+hide ch_gg_smug
+show ch_gg_angry
 gg "Cry? Pee your pants, maybe? Throw a fit?"
 
 pc "Well, I’m certainly not going to hang out with you anymore, that’s for sure."
 
 "I tug my jacket closer around my shoulders as I take a few nervous steps away from her, brow furrowed as I make sure that the path between me and the exit is clear."
-
+hide ch_gg_angry
+show ch_gg_tears
 "It… it really does hurt. I’m not sure what Jade was planning to do all this time, but I find myself wondering… was this the real her, all along?"
 
 "For a moment, she looks… hurt."
 
 "But what was she expecting to happen? Surely, nothing other than this?"
-
-gg "Fine, then. Didn’t want to hang out with a loser like you, anyway."
+hide ch_gg_tears
+show ch_gg_angry
+gg "Fine, then. It's not like I wanted to hang out with a loser like you, anyway."
 
 gg "See ya."
 
@@ -1069,24 +1087,26 @@ label day3_lh:
     pc "And I think it’s pretty obvious now that you were doing that just to get a reaction out of me."
 
     "Jade’s eyes widen for a moment before turning back into an angry, almost begging expression."
-
+    hide ch_gg_suprised
+    show ch_gg_smug
     gg "Right? So aren’t you mad at me for manipulating you?!"
 
     pc "Again, I don’t really care."
 
     pc "You wanna go get some ice cream?"
-    hide ch_gg_surprised
+    hide ch_gg_smug
     show ch_gg_eyeroll
     gg "...you can’t be serious."
 
     pc "If you really want me to be mad, then, uh, grr. I’m angry so you need to be the one that pays."
 
     "Jade stares at me incredulously before shaking her head."
-
+    hide ch_gg_eyeroll
+    show ch_gg_angry
     gg "I don’t… I don’t get you. What the hell is your problem?"
 
-    "With that, Jade shoulders past me, causing me to drop the charm."
-
+    "With that, Jade shoulders past me, causing me to drop the charm, it clatters on the carpet silently."
+    hide ch_gg_angry
     pc "Ah--"
 
     "I bend over to pick it up, rubbing it to clean it of dust. By the time I look up again, she’s gone."
@@ -1347,120 +1367,148 @@ label day4_mf:
 
     label day4_gg:
         scene bg_long_day4
-        show ch_gg_neutral
+
         "When I walk into the arcade and see Jade leaning against the wall, I begin waving excitedly at her almost immediately, grin wide and welcoming."
-
-        "In a worst case scenario, I expected her to scowl and run away. In a best case one, I expected her to run over and hug me. What I don’t expect is her marching over to me angrily, frown growing as she crosses her arms in front of me."
-
-gg " We need to talk."
-
-pc " O… kay?"
-
-gg " P-privately."
-
-pc " Yeah, sure where do you want to-- Oh, okay."
-
-" Jade turns on her heel and begins making her way over to a darker corner of the arcade before I’ve even finished speaking, and I dog behind her obediently. "
-
-" When she spins around to face me again, there’s something in her expression that’s seething."
-
-gg " You need to leave me alone."
-
-pc " Huh?"
-
-pc " That’s not what I was expecting-- I mean, uh."
-
-pc " Did I… do something to hurt you?"
-
-gg " No, no, you’re-- You didn’t do anything."
-
-gg " Or rather, you’re doing too much. It’s just--"
-
-gg " Ugh."
-
-" Jade pinches the bridge of her nose, and I try prodding further."
-
-pc " Hey, if you need anything, I’m here, alright?"
-
-pc " I get… uh, the end of the world is. Kinda stressful for everyone involved."
-
-pc " And I don’t say this to sound obnoxious or conceited, but I’m really uh. Not that afraid about dying, haha. So if you need somewhere to explode, I can be a shoulder to lean on or whatever."
-
-gg " No, that’s not it."
-
-gg " That’s kinda creepy, but it’s not it."
-
-pc " Then what’s it?"
-
-gg " You can’t just--"
-
-pc " You need to tell me what’s wrong for me to help."
-
-gg " You’re so persistent, it makes me sick."
-
-pc " I-- I-I can’t tell if that’s a bad thing or not, but I really just want to help--"
-
-gg " Ugh! Why won’t you just abandon me--"
-
-" Jade cuts herself off as her voice begins to rise in both intensity and volume, teeth worrying her bottom lip. She glances around nervously, as if to make sure that no one else had heard, before staring back at me as if I were some sort of grand decider of her fate."
-
-" Maybe, in her mind, I am. The thought that someone would try and place that sort of responsibility on anyone, let alone me, makes my stomach turn."
-
-pc " Why would I?"
-
-pc " That seems like an excessively cruel and dramatic, especially at the end of the world. "
-
-" Somehow, my statements only seem to provoke her more, her frustration quickly mounting."
-
-gg " Because that’s what everyone else does, isn’t it?"
-
-gg " If you’re just stringing me along because you think it’s fun to screw with someone’s feelings, then I’m sick of it! I’m tired of it and I’d rather you be honest with me now so I can rebound by tomorrow then have the last thought on my mind be how angry I am at myself for falling for this shit!"
-
-gg " The first day, I could believe. Alright. Whatever. Maybe you’re one of those people who gets off doing random acts of kindness."
-
-gg " Second day, okay. Pushing it, but that’s fine, too. You just didn’t know me super well yet, needed to realize how much I sucked before leaving."
-
-gg " Third day was ridiculous. I couldn’t understand why you hadn’t-- why you didn’t leave. You should have left, after getting to know me, and after that, I was like “what the hell is wrong with you?” and decided to take matters into my own hands because at least then, I could believe that I had cut the connection off myself instead of you just tossing me to the side eventually."
-
-gg " But you didn’t even leave then. Which means that you’re just lying to me through your teeth and this entire time you’ve been pretending, stringing me along because you wouldn’t be here otherwise."
-
-gg " It’s not funny anymore."
-
-" Exhausted, she exhales and leans back onto one of the arcade machines, the sweat on her skin apparent in the fluorescent light. "
-
-pc " Jade…"
-
-gg " Stop. I don’t-- If you’re gonna waste more time on me because you think I’m pathetic then you need to leave. "
-
-pc " Well, uh…"
-
-pc " I don’t mean this in a mean way, but you’re completely wrong, you know."
-
-pc " I’m… I’m kind of ashamed to say it, but I really had no way you felt this way. I’m sorry about that. "
-
-pc " I really enjoy hanging out with you. I don’t think I’d be doing anything else at the end of the world, given the choice."
-
-pc " I mean, it’s not like I have the time to make any other friends--"
-
-gg " Oh."
-
-" There’s something in her mind that just… clicks, there. Something that elicits such a sigh of understanding from her that there’s something big I’m afraid I’ve missed."
-
-gg " So you’re just hanging out with me because you’re as pathetic as me."
-
-gg " You’re just hanging out with me because you don’t have any other friends, and I’m a good bottom o’ the barrel pick."
-
-gg " Ha."
-
-" There’s no humor in her voice, but she smiles anyway, gaze tracing circles in the ground as  she comes to some grand conclusion before looking back up at me with a look that I think is supposed to be cruel."
-
-gg " Whatever. It’s not like I really wanted to be around you, anyway."
-
-" She scoffs and flips her hair with such a violent pointedness that I’m taken aback a bit as she turns away, heels snapping against the carpeted floor."
+        show ch_gg_neutral
+        "In a worst case scenario, I expected her to scowl and run away. In a best case one, I expected her to run over and hug me."
+        "What I don’t expect is her marching over to me angrily, frown growing as she crosses her arms in front of me."
 hide ch_gg_neutral
-" Despite her words, I feel more sorry for her than I feel hurt."
+show ch_gg_flustered
+gg "We need to talk."
 
-" I… really hope I’ll get to see her tomorrow, one last time."
+pc "O… kay?"
+
+gg "P-privately."
+
+pc "Yeah, sure where do you want to-- Oh, okay."
+hide ch_gg_flustered
+"Jade turns on her heel and begins making her way over to a darker corner of the arcade before I’ve even finished speaking, and I dog behind her obediently. "
+scene bg_desk_day4
+show ch_gg_angry
+"When she spins around to face me again, there’s something in her expression that’s seething."
+
+gg "You need to leave me alone."
+
+pc "Huh?"
+
+pc "That’s not what I was expecting-- I mean, uh."
+
+pc "Did I… do something to hurt you?"
+hide ch_gg_angry
+show ch_gg_flustered
+gg "No, no, you’re-- You didn’t do anything."
+hide ch_gg_flustered
+show ch_gg_flustered:
+    xzoom -1.0
+gg "Or rather, you’re doing too much. It’s just--"
+hide ch_gg_flustered
+show ch_gg_flustered
+gg "Ugh."
+
+"Jade pinches the bridge of her nose, and I try prodding further."
+
+pc "Hey, if you need anything, I’m here, alright?"
+
+pc "I get… uh, the end of the world is. Kinda stressful for everyone involved."
+
+pc "And I don’t say this to sound obnoxious or conceited, but I’m really uh. Not that afraid about dying, haha. So if you need somewhere to explode, I can be a shoulder to lean on or whatever."
+
+gg "No, that’s not it."
+hide ch_gg_flustered
+show ch_gg_neutral
+gg "That’s kinda creepy, but it’s not it."
+
+pc "Then what’s it?"
+hide ch_gg_neutral
+show ch_gg_flustered
+gg "You can’t just--"
+
+pc "You need to tell me what’s wrong for me to help."
+hide ch_gg_flustered
+show ch_gg_tears
+gg "You’re so persistent, it makes me sick."
+
+pc "I-- I-I can’t tell if that’s a bad thing or not, but I really just want to help--"
+
+gg "Ugh! Why won’t you just abandon me--"
+hide ch_gg_tears
+show ch_gg_flustered
+"Jade cuts herself off as her voice begins to rise in both intensity and volume, teeth worrying her bottom lip."
+
+"She glances around nervously, as if to make sure that no one else had heard, before staring back at me as if I were some sort of grand decider of her fate."
+
+"Maybe, in her mind, I am. The thought that someone would try and place that sort of responsibility on anyone, let alone me, makes my stomach turn."
+
+pc "Why would I?"
+
+pc "That seems like an excessively cruel and dramatic, especially at the end of the world. "
+
+"Somehow, my statements only seem to provoke her more, her frustration quickly mounting."
+hide ch_gg_flustered
+show ch_gg_angry
+gg "Because that’s what everyone else does, isn’t it?"
+
+gg "If you’re just stringing me along because you think it’s fun to screw with someone’s feelings, then I’m sick of it!"
+
+gg "I’m tired of it and I’d rather you be honest with me now so I can rebound by tomorrow then have the last thought on my mind be how angry I am at myself for falling for this shit!"
+
+gg "The first day, I could believe. Alright. Whatever. Maybe you’re one of those people who gets off doing random acts of kindness."
+hide ch_gg_angry
+show ch_gg_angry:
+    xzoom -1.0
+gg "Second day, okay. Pushing it, but that’s fine, too. You just didn’t know me super well yet, needed to realize how much I sucked before leaving."
+hide ch_gg_angry
+show ch_gg_angry
+gg "Third day was ridiculous. I couldn’t understand why you hadn’t-- why you didn’t leave. You should have left, after getting to know me, and after that, I was like “what the hell is wrong with you?”"
+
+gg "I decided to take matters into my own hands because at least then, I could believe that I had cut the connection off myself instead of you just tossing me to the side eventually."
+
+gg "But you didn’t even leave then. Which means that you’re just lying to me through your teeth"
+hide ch_gg_angry
+show ch_gg_angry:
+    xzoom -1.0
+gg "this entire time you’ve been pretending, stringing me along because you wouldn’t be here otherwise."
+
+gg "It’s not funny anymore."
+
+"Exhausted, she exhales and leans back onto one of the arcade machines, the sweat on her skin apparent in the fluorescent light. "
+hide ch_gg_angry
+show ch_gg_tears
+pc "Jade…"
+
+gg "Stop. I don’t-- If you’re gonna waste more time on me because you think I’m pathetic then you need to leave. "
+
+pc "Well, uh…"
+
+pc "I don’t mean this in a mean way, but you’re completely wrong, you know."
+
+pc "I’m… I’m kind of ashamed to say it, but I really had no way you felt this way. I’m sorry about that. "
+
+pc "I really enjoy hanging out with you. I wouldn't be doing anything else at the end of the world, given the choice."
+
+pc "I mean, it’s not like I have the time to make any other friends--"
+hide ch_gg_tears
+show ch_gg_neutral
+gg "Oh."
+
+"There’s something in her mind that just… clicks, there. Something that elicits such a sigh of understanding from her that there’s something big I’m afraid I’ve missed."
+
+gg "So you’re just hanging out with me because you’re as pathetic as me."
+hide ch_gg_tears
+show ch_gg_smug
+gg "You’re hanging out with me because you don’t have any other friends, and I’m a good bottom o’ the barrel pick."
+
+gg "Ha."
+
+"There’s no humor in her voice, but she smiles anyway, gaze tracing circles in the ground as  she comes to some grand conclusion before looking back up at me with a look that I think is supposed to be cruel."
+
+gg "Whatever. It’s not like I really wanted to be around you, anyway."
+
+"She scoffs and flips her hair with such a violent pointedness that I’m taken aback a bit as she turns away, heels snapping against the carpeted floor."
+hide ch_gg_smug
+"Despite her words, I feel more sorry for her than I feel hurt."
+
+"I… really hope I’ll get to see her tomorrow, one last time."
 
 jump day4_end
 
@@ -1723,29 +1771,35 @@ label day5_hb:
 
 label day5_gg:
 scene bg_long_day5
-show ch_gg_neutral
+
 gg " Hey! Uhm, uh. H-hey."
-
+show ch_gg_neutral
 " I turn to see Jade waving from just inside the arcade. I pay for my last ticket, nodding at Rosa before moving on to meet Jade in the entrance way."
-
+hide ch_gg_neutral
+show ch_gg_flustered
 " She stands there for a moment, opening her mouth and gaping, struggling to formulate her words before shaking her head and motioning inside."
 
 " It’s only when we’re seated at one of the dirty tables used by kids to have a germfest of a birthday party feast that she manages to pull herself together enough to speak."
 
 gg " I want to preface this with the fact that I didn’t really expect to meet you in the first place."
-
+hide ch_gg_flustered
+show ch_gg_flustered:
+    xzoom -1.0
 gg " Hell, I don’t know why I kept coming back. I just always really wanted that plushie, so I decided to make that the priority of my bucket list, and then… ugh."
 
 " She slaps her hand against the table, frustrated with herself."
-
+hide ch_gg_flustered
+show ch_gg_angry
 gg " I don’t know. I wanted you to leave me alone, but I kept on coming back to talk to you. So who knows, man."
-
+hide ch_gg_angry
+show ch_gg_impressed
 gg " But I do know why I’m here today. I’m really glad you ended up coming back to the arcade, because I don’t know what I would’ve done with myself otherwise."
 
 gg " So, uhm."
 
 " Awkwardly, she dips her head low enough to press against the table."
-
+hide ch_gg_impressed
+show ch_gg_flustered
 gg " I’m really, really sorry about everything I said yesterday. It was mean and unwarranted, and I shouldn’t have acted like I was better than you or if you were suddenly bad or whatever."
 
 gg " S’was shitty. I’m sorry for offending you so badly."
@@ -1753,7 +1807,8 @@ gg " S’was shitty. I’m sorry for offending you so badly."
 pc " I mean… I don’t think I was offended as much as I really just felt-- feel bad for you."
 
 pc " Maybe that comes off as high and mighty, and if so, I really apologize… but I don’t know how else to put it."
-
+hide ch_gg_flustered
+show ch_gg_tears
 gg " You feel bad… for me?"
 
 gg " Uhm. I don’t really think you should do that, haha. I can-- I can totally get someone like me being seen as super sympathetic, sure, but I think I’m a little too pathetic and a little too mean to be seen as someone pitiable."
@@ -1763,9 +1818,11 @@ gg " Ha. Ha. "
 " She says it with such conviction that it’s impossible to not believe her."
 
 " Perhaps, if it had come from someone else, I could have taken it as the words of someone who was fishing for pity."
-
+hide ch_gg_tears
+show ch_gg_neutral
 gg " I just…"
-
+hide ch_gg_neutral
+show ch_gg_tears
 gg " I don’t really think anyone can like me. Sure, maybe I haven’t done any big crime, or anything super disgusting or anything, but I’m that sort of person who…"
 
 gg " It’s like that one kid in the class who no one likes. When you’re not around them, you feel bad for them, because no one likes them. Maybe you even think to yourself,''I really wish I could hang out with them more, because they deserve to have a friend'', or something like that."
@@ -1777,15 +1834,19 @@ gg " I really thought to myself, “if I ever have a friend, I’ll be really ha
 gg " But then you hung out with me, and you didn’t leave, and all I could feel was… angry?"
 
 gg " I was genuinely, super upset. I was mad, and I didn’t…"
-
+hide ch_gg_tears
+show ch_gg_angry
 gg " I didn’t like you."
-
+hide ch_gg_angry
+show ch_gg_neutral
 gg " I don’t know why. I liked you when I first met you, and then the more you hung out with me, I only seemed to like you less and less, growing more and more frustrated with you as time drew on."
 
 gg " And I… I don’t know why. I’m sorry."
 
 gg " That’s really so pathetic and mean of me, haha. I’m sure you can tell why no one else wanted to hang out with me before you."
-
+hide ch_gg_neutral
+show ch_gg_neutral:
+    xzoom -1.0
 pc " ...that’s…"
 
 gg " Shitty of me to say, I know, haha. If I had any money on me, I’d give you something to soften the blow. Slipped my mind. Whoops. Haha."
@@ -1793,7 +1854,8 @@ gg " Shitty of me to say, I know, haha. If I had any money on me, I’d give you
 pc " ...well, you clearly don’t like yourself, for one thing."
 
 pc " So maybe that self-hatred just extended onto me, for a bit."
-
+hide ch_gg_neutral
+show ch_gg_flustered
 gg " ...huh?"
 
 pc " You hate yourself so much, and you’re so unused to people being nice to you."
@@ -1809,7 +1871,8 @@ pc " So you don’t need to hate yourself for that, too. It’s kind of a little
 pc " I’m not mad at you, nor do I hate you, like I said. I just want you to understand that I do like you, and even at the end of the world, I really want to be your friend."
 
 pc " ...is that okay?"
-
+hide ch_gg_flustered
+show ch_gg_tears
 " As I’ve been speaking, Jade’s eyes have begun to water. She wipes at her nose with the back of her hand, unable to meet my gaze as her own struggles to find a proper place to look."
 
 " It’s only as I stop talking that she looks up at me in the expectant silence, chest fluttering slightly as she tries to keep her rapidly breaking voice from cracking. "
@@ -1819,7 +1882,9 @@ gg " Y… yeah. "
 gg " You’re really nice. And I like being your friend, even if…"
 
 gg " ...even if I made it really difficult. Thank you for sticking by me."
-
+hide ch_gg_tears
+show ch_gg_tears:
+    xzoom -1.0
 " I don’t answer that, not verbally."
 
 " Instead, I stick my hand out expectantly."
@@ -1922,10 +1987,10 @@ label day5_mf:
 label day5_end:
     scene bg_black
     "Thanks for playing!"
-    " Writing Director: Kiki Bajer \n
-    Art Director: Schuyler Pritchard \n
-    Lead Programmer: Drew James \n"
+    "Writing Director: Kiki Bajer \nArt Director: Schuyler Pritchard \nLead Programmer: Drew James \n"
     "Music provided from One Man symphony licensed under Attribution 4.0 International (CC BY 4.0)"
     "Special thanks to Nathan Booth, Syrup and that picture of a possum screaming at his own ass"
-    show possum at top
+    show possum:
+        xalign 0.5
+        yalign 0.5
     "there he is"

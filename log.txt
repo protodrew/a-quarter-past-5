@@ -1,4 +1,4 @@
-Thu Oct 15 21:55:20 2020
+Thu Oct 15 22:06:02 2020
 Linux-5.4.0-7642-generic-x86_64-with-debian-bullseye-sid
 Ren'Py 7.3.5.606
  
@@ -7,29 +7,29 @@ Bootstrap to the start of init.init took 0.05s
 Early init took 0.00s
 Loader init took 0.01s
 Loading error handling took 0.02s
-Loading script took 0.48s
-Loading save slot metadata. took 0.02s
+Loading script took 0.43s
+Loading save slot metadata. took 0.01s
 Loading persistent took 0.00s
 Importing _renpysteam: ImportError('No module named _renpysteam',)
-Running init code took 0.05s
-Loading analysis data took 0.02s
+Running init code took 0.04s
+Loading analysis data took 0.01s
 Analyze and compile ATL took 0.00s
 Index archives took 0.00s
 Backing up script files to '/home/protodrew/.renpy/backups/a-quarter-past-5':
-Dump and make backups. took 0.05s
+Dump and make backups. took 0.04s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
 Initial gc. took 0.02s
 DPI scale factor: 1.000000
-Creating interface object took 0.27s
+Creating interface object took 0.06s
 Cleaning stores took 0.00s
-Init translation took 0.05s
-Build styles took 0.01s
+Init translation took 0.02s
+Build styles took 0.00s
 Load screen analysis took 0.00s
-Analyze screens took 0.02s
-Save screen analysis took 0.07s
-Prepare screens took 0.07s
-Save pyanalysis. took 0.00s
+Analyze screens took 0.01s
+Save screen analysis took 0.05s
+Prepare screens took 0.05s
+Save pyanalysis. took 0.06s
 Save bytecode. took 0.05s
 Running _start took 0.00s
 Performance test:
@@ -38,7 +38,7 @@ Interface start took 0.02s
 primary display bounds: (0, 0, 1920, 1080)
 swap interval: 1 frames
 Windowed mode.
-Screen sizes: virtual=(1920, 1080) physical=(1739, 978) drawable=(1739, 978)
+Screen sizes: virtual=(1920, 1080) physical=(960, 540) drawable=(960, 540)
 Vendor: 'NVIDIA Corporation'
 Renderer: 'GeForce RTX 2070 with Max-Q Design/PCIe/SSE2'
 Version: '4.6.0 NVIDIA 455.28'
@@ -457,33 +457,75 @@ Texture testing:
 - 2048px textures work.
 Root FBO is: 0
 FBO Maximum Texture Size: 2048
-Total time until interface ready: 1.43543386459s
+Total time until interface ready: 1.1275229454s
 - Target is 5 frames in 0.333333333333 seconds.
 - Frame drawn at 0.000000 seconds.
+- Frame drawn at 0.004348 seconds.
+- Frame drawn at 0.011193 seconds.
+- Frame drawn at 0.018379 seconds.
+- Frame drawn at 0.025683 seconds.
+- 0.025683 seconds to render 5 frames.
 
 primary display bounds: (0, 0, 1920, 1080)
 swap interval: 1 frames
 Windowed mode.
-Screen sizes: virtual=(1920, 1080) physical=(1920, 1016) drawable=(1920, 1016)
-Root FBO is: 0
-FBO Maximum Texture Size: 2048
-- Frame drawn at 0.018617 seconds.
-- Frame drawn at 0.020871 seconds.
-- Frame drawn at 0.022352 seconds.
-- Frame drawn at 0.023737 seconds.
-- 0.023737 seconds to render 5 frames.
-
-primary display bounds: (0, 0, 1920, 1080)
-swap interval: 1 frames
-Windowed mode.
-Screen sizes: virtual=(1920, 1080) physical=(1717, 965) drawable=(1717, 965)
+Screen sizes: virtual=(1920, 1080) physical=(960, 539) drawable=(960, 539)
 Root FBO is: 0
 FBO Maximum Texture Size: 2048
 
 primary display bounds: (0, 0, 1920, 1080)
 swap interval: 1 frames
 Windowed mode.
-Screen sizes: virtual=(1920, 1080) physical=(1728, 950) drawable=(1728, 950)
+Screen sizes: virtual=(1920, 1080) physical=(960, 535) drawable=(960, 535)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Screen sizes: virtual=(1920, 1080) physical=(960, 533) drawable=(960, 533)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Screen sizes: virtual=(1920, 1080) physical=(960, 531) drawable=(960, 531)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Screen sizes: virtual=(1920, 1080) physical=(960, 527) drawable=(960, 527)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Screen sizes: virtual=(1920, 1080) physical=(960, 526) drawable=(960, 526)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Screen sizes: virtual=(1920, 1080) physical=(960, 525) drawable=(960, 525)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Screen sizes: virtual=(1920, 1080) physical=(960, 523) drawable=(960, 523)
+Root FBO is: 0
+FBO Maximum Texture Size: 2048
+
+primary display bounds: (0, 0, 1920, 1080)
+swap interval: 1 frames
+Windowed mode.
+Screen sizes: virtual=(1920, 1080) physical=(960, 494) drawable=(960, 494)
 Root FBO is: 0
 FBO Maximum Texture Size: 2048
 
