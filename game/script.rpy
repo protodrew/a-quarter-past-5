@@ -1,5 +1,6 @@
 define pc = Character("[name]", color="#d44e8e")
 define gg = Character("Jade", color="#4f12b2")
+define mg = Character("Mysterious Girl", color="#4f12b2")
 define hb = Character("Herbert", color="#f45578")
 define ab = Character("Angry looking boy", color="#f45578")
 define mf = Character("Rosa", color="#37c1d3")
@@ -91,10 +92,10 @@ label day1_gg:
     "What stands out to me, more than anything else, is the comically large platypus doll plopped on top of the shooter game “SPLAT” console in the middle of the room."
     "The most shocking thing, really, is that it hasn’t been plucked up and taken away yet, but closer inspection reveals that it’s been chained down to the console in order to prevent such highway robberies."
     show ch_gg_neutral
-    gg "You’ve got to beat the high score to get it."
+    mg "You’ve got to beat the high score to get it."
     pc "Huh?"
-    gg "Trust me, if it was that easy, that platypus would be gone by now. But it’s not."
-    gg "You’re welcome to try your hand at the game if you’d like. Hell knows that it’d make me feel better seeing someone else fail."
+    mg "Trust me, if it was that easy, that platypus would be gone by now. But it’s not."
+    mg "You’re welcome to try your hand at the game if you’d like. Hell knows that it’d make me feel better seeing someone else fail."
 
     menu:
         "Try The Game":
@@ -109,27 +110,30 @@ label day1_tg:
     pc "Yeah, I think I’ll give it a go."
     hide ch_gg_neutral
     show ch_gg_eyeroll
-    gg "Pfft. Good Luck"
+    mg "Pfft. Good Luck"
     scene bg_long_day1
-    show ch_gg_surprised
+
     $ route = "Jade"
-    "With that, the metal clasp that had been holding the platypus down comes unhinged, letting it fall easily into my hands. It feels nice to have won something, but after hugging it tightly for a few seconds, I realize that I don’t actually want to lug this thing home."
-    gg "Oh… You actually. Won, huh."
+    "With that, the metal clasp that had been holding the platypus down comes unhinged, letting it fall easily into my hands."
+    "It feels nice to have won something, but after hugging it tightly for a few seconds, I realize that I don’t actually want to lug this thing home."
+    hide ch_gg_eyeroll
+    show ch_gg_surprised
+    mg "Oh… You actually. Won, huh."
 
     pc "Do you, uh, want this…?"
     hide ch_gg_surprised
     show ch_gg_flustered
     "The girl looks so genuinely startled that it makes me wonder if I accidentally said a slur or something, but recollects herself quickly enough."
-    gg "You sure about that? You’ve got yourself a real good chunky boy right there. Maybe you shouldn’t be letting go of him that easily."
+    mg "You sure about that? You’ve got yourself a real good chunky boy right there. Maybe you shouldn’t be letting go of him that easily."
     pc "No, it’s fine. I don’t really mind."
     "I hand it over to her, and she blinks a few more times as she looks between me and the platypus plushie before clearing her throat."
     hide ch_gg_flustered
     show ch_gg_neutral
-    gg "Well, such a noble sacrifice demands a name in payment, at the very least: I’m Jadeself."
+    mg "Well, such a noble sacrifice demands a name in payment, at the very least: I’m Jade."
     hide ch_gg_neutral
     show ch_gg_smug
     gg "Maybe I’ll see you again before I die. Or not. Heh."
-    "As if it wasn’t a little morbid, GG laughs to herself, taking the platypus plushie and exiting the building. "
+    "As if it wasn’t a little morbid, Jade laughs to herself, taking the platypus plushie and exiting the building."
     pc "I wonder if I’ll see her tomorrow…"
     jump day1_done
 
