@@ -20,7 +20,7 @@ label start:
         name = name.strip() or __("Corey")
 
     "Your name is now [name]"
-    scene bg_newsroom
+    scene bg_news_day1
     show ch_nm_frown
     play music "audio/newssong.ogg"
     nm "-- with grim faces that the world’s greatest minds have told us to wrap up any unfinished business."
@@ -86,7 +86,7 @@ label day1_hb:
 
 label day1_gg:
     scene bg_long_day1
-
+    show platypus
     "the Second Arcade Room is a lot more single-player centric, so there aren't any people interacting with each other here."
     "I thought it would be easier to breathe and do my own thing, and yet…"
     "What stands out to me, more than anything else, is the comically large platypus doll plopped on top of the shooter game “SPLAT” console in the middle of the room."
@@ -105,16 +105,19 @@ label day1_gg:
 
 label day1_tg:
     scene bg_long_day1
-
+    show platypus
     show ch_gg_neutral
     pc "Yeah, I think I’ll give it a go."
     hide ch_gg_neutral
     show ch_gg_eyeroll
     mg "Pfft. Good Luck"
     scene bg_long_day1
-
+    show platypus
     $ route = "Jade"
+    "suprisingly... The game, while difficult seeming, had some patterns I was able to latch on to"
+    "It took a few more quarters than I would like to admit, but I was able to defeat the final boss"
     "With that, the metal clasp that had been holding the platypus down comes unhinged, letting it fall easily into my hands."
+    hide platypus
     "It feels nice to have won something, but after hugging it tightly for a few seconds, I realize that I don’t actually want to lug this thing home."
     hide ch_gg_eyeroll
     show ch_gg_surprised
@@ -141,6 +144,7 @@ label day1_tg:
 label day1_gse:
     scene bg_long_day1
     show ch_gg_neutral
+    show platypus
     pc "U-uh, I think I’ll try going somewhere else for now…"
     hide ch_gg_neutral
     show ch_gg_smug
@@ -338,7 +342,7 @@ init python:
             # Handle bounces.
 
             # Bounce off of top.
-            ball_top = self.COURT_TOP + self.BALL_HEIGHT / 2
+            ball_top = self.COURT_TOP - 30 + self.BALL_HEIGHT / 2
             if self.by < ball_top:
                 self.by = ball_top + (ball_top - self.by)
                 self.bdy = -self.bdy
@@ -347,7 +351,7 @@ init python:
                     renpy.sound.play("audio/pongl.ogg", channel=0)
 
             # Bounce off bottom.
-            ball_bot = self.COURT_BOTTOM - self.BALL_HEIGHT / 2
+            ball_bot = self.COURT_BOTTOM + 38 - self.BALL_HEIGHT / 2
             if self.by > ball_bot:
                 self.by = ball_bot - (self.by - ball_bot)
                 self.bdy = -self.bdy
@@ -397,14 +401,14 @@ init python:
                           int(self.by - self.BALL_HEIGHT / 2)))
 
             # Check for a winner.
-            if self.bx < -50:
+            if self.bx < 340:
                 self.winner = "Herbert"
 
                 # Needed to ensure that event is called, noticing
                 # the winner.
                 renpy.timeout(0)
 
-            elif self.bx > width + 50:
+            elif self.bx > width - 340:
                 self.winner = "player"
                 renpy.timeout(0)
 
@@ -447,6 +451,11 @@ screen pong():
     add "bg_pong_field"
 
     add pong
+    add "ch_hb_smug":
+        xpos 1600
+        ypos 800
+        xzoom 0.25
+        yzoom 0.25
 
     text _("[name]"):
         xpos 240
@@ -533,7 +542,7 @@ label day1_done:
     jump day2_start
 
 label day2_start:
-    scene bg_newsroom
+    scene bg_news_day2
     show ch_nm_frown
     play music "audio/newssong.ogg" fadeout 1
     nm "While the phrase ‘new beginnings’ might make one feel a little nihilistic at a time like this..."
@@ -826,7 +835,7 @@ label day2_pd:
         jump day3_start
 
 label day3_start:
-    scene bg_newsroom
+    scene bg_news_day3
     show ch_nm_frown
     play music "audio/newssong.ogg" fadeout 1
 
@@ -1241,7 +1250,7 @@ label day3_end2:
     jump day4_end
 
 label day4_start:
-    scene bg_newsroom
+    scene bg_news_day4
     show ch_nm_frown
     play music "audio/newssong.ogg" fadeout 1
 
@@ -1644,17 +1653,13 @@ label day4_hb:
     hb "If you break that promise, I’ll for real kill you. Meteor won’t even have a chance to."
     pc "Haha. I look forward to that, then."
 
-
-
-
-
 label day4_end:
     scene bg_black
     "{cps=25}1 day remains{/cps}"
     jump day5_start
 
 label day5_start:
-    scene bg_newsroom
+    scene bg_news_day5
     show ch_nm_frown
     play music "audio/newssong.ogg" fadeout 1
 
@@ -1766,7 +1771,7 @@ label day5_hb:
     "I open my arms out to the side, and after only a moment’s hesitation, he pushes himself forward into my grasp."
     "My shoulder begins to feel wet after only a few seconds."
     "Even though he can’t see me, I’m smiling, and I give him a firm pat on the back."
-
+    scene cs_hb
     jump day5_end
 
 label day5_gg:
@@ -1890,7 +1895,7 @@ show ch_gg_tears:
 " Instead, I stick my hand out expectantly."
 
 " Trembling a little bit, she takes my hand in both of hers, shaking it firmly."
-
+scene cs_gg
 jump day5_end
 
 label day5_mf:
@@ -1982,6 +1987,7 @@ label day5_mf:
     "I can’t tell if it’s my brain that’s making the air sound like static, or the rapidly approaching meteor."
     "Either way, it brings an overwhelming sense of peace to my mind as I cling tighter to Rosa"
     "She rubs my back firmly, and I close my eyes."
+    scene cs_owner
     jump day5_end
 
 label day5_end:
@@ -1989,6 +1995,7 @@ label day5_end:
     "Thanks for playing!"
     "Writing Director: Kiki Bajer \nArt Director: Schuyler Pritchard \nLead Programmer: Drew James \n"
     "Music provided from One Man symphony licensed under Attribution 4.0 International (CC BY 4.0)"
+    "Game menu and textbar art adapted from the works of Charlotte Winter"
     "Special thanks to Nathan Booth, Syrup and that picture of a possum screaming at his own ass"
     show possum:
         xalign 0.5
